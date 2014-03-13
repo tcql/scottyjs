@@ -1,0 +1,15 @@
+{
+  "name": "scotty-gui",
+  "dependencies": {
+    "nodewebkit": "^0.8.5"
+  },
+  "scripts": {
+    "start": "nodewebkit"
+  },
+  "main": "pages/index.html",
+  "window": {
+    "toolbar": false,
+    "height": 600,
+    "width": 1000
+  }
+}
