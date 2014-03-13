@@ -1,7 +1,12 @@
 {
   "name": "scotty-gui",
+  "version": "1.0.0",
   "dependencies": {
-    "nodewebkit": "^0.8.5"
+    "nodewebkit": "^0.8.5",
+    "scotty-lib": "git://github.com/tchannel/scotty-lib.git#master"
+  },
+  "bin": {
+    "scotty": "./node_modules/.bin/nodewebkit"
   },
   "scripts": {
     "start": "nodewebkit"
@@ -11,5 +16,9 @@
     "toolbar": false,
     "height": 600,
     "width": 1000
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-node-webkit-builder": "^0.1.17"
   }
 }
