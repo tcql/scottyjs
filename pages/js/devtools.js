@@ -14,6 +14,10 @@ $(function() {
         if ((e.ctrlKey) && (e.shiftKey) && (e.which == 73)) {
             devToolsToggle()
         }
+
+        if ( ((e.ctrlKey) && (e.which == 82)) || (e.which == 116) ) {
+            location.reload()
+        }
     });
 
 });

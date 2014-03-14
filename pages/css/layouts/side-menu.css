@@ -51,17 +51,24 @@ The content `<div>` is where all your content goes.
 }
 
 .header {
+     background-color:#333;
+     height:97px;
      margin: 0;
-     color: #333;
+     color: #aaa;
      text-align: center;
-     padding: 2.5em 2em 0;
-     border-bottom: 1px solid #eee;
+     /*padding: 2.5em 2em 0;*/
+     border-bottom: 1px solid #ccc;
  }
     .header h1 {
-        margin: 0.2em 0;
-        font-size: 3em;
+        margin: 0 0 0.2em 0;
+        font-size: 2.2em;
         font-weight: 300;
     }
+
+    .header .solo-head {
+        padding-top:25px;
+    }
+
      .header h2 {
         font-weight: 300;
         color: #ccc;
@@ -147,6 +154,7 @@ appears on the left side of the page.
         font-size: 110%;
         color: #fff;
         margin: 0;
+        background-color:#0088ff;
     }
 
 /* -- Dynamic Button For Responsive Menu -------------------------------------*/
