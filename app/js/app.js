@@ -8,10 +8,11 @@ $(function () {
 
         this.get('#/versions', function(context) {
 
-            this.installed = []
+            this.installed = ['1.1.6']
             this.available = [
-                {name:'2.0', installed: true},
-                {name:'2.1', installed: this.params['installed']}
+                {name:'1.1.6', installed: true},
+                {name:'1.1.5', installed: this.params['installed']},
+                {name:'1.1.4', installed: this.params['installed']}
             ]
             this.partial('templates/versions/main.hb');
         });

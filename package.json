@@ -7,7 +7,7 @@
   "scripts": {
     "start": "nodewebkit"
   },
-  "main": "pages/index.html",
+  "main": "app/index.html",
   "window": {
     "toolbar": true,
     "height": 600,

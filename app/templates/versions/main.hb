@@ -8,17 +8,16 @@
     {{#if installed}}
 
         {{#each installed}}
-
+            {{this}}<br />
         {{/each}}
     {{else}}
         No versions have been installed
     {{/if}}
 
     <h2 class="content-subhead">Available Versions</h2>
+    <p>
     <a class='button-secondary pure-button'><i class='fa fa-refresh'> </i> Refresh List</a>
-    <blockquote>
-        <strong>Note:</strong> only versions 2.0 and above are available
-    </blockquote>
+    </p>
 
     <table class='pure-table'>
         <tbody>
