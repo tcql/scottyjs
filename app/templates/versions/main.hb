@@ -3,20 +3,12 @@
 </div>
 
 <div class="content">
-    <h2 class="content-subhead">Installed Versions</h2>
-
-    {{#if installed}}
-
-        {{#each installed}}
-            {{this}}<br />
-        {{/each}}
-    {{else}}
-        No versions have been installed
-    {{/if}}
 
     <h2 class="content-subhead">Available Versions</h2>
     <p>
-    <a class='button-secondary pure-button'><i class='fa fa-refresh'> </i> Refresh List</a>
+        <a href="#/versions/refresh" class='button-secondary pure-button'>
+            <i class='fa fa-refresh'> </i> Refresh List
+        </a>
     </p>
 
     <table class='pure-table'>
