@@ -1,10 +1,10 @@
-<div class="header">
+{{!-- <div class="header">
     <h1 class='solo-head'>phaser versions</h1>
-</div>
+</div> --}}
 
 <div class="content">
 
-    <h2 class="content-subhead">Available Versions</h2>
+    <h1>Available Versions</h1>
     <p>
         <a href="#/versions/refresh" class='button-secondary pure-button'>
             <i class='fa fa-refresh'> </i> Refresh List

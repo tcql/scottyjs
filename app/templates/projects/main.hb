@@ -1,7 +1,10 @@
-<div class="header">
-    <h1 class='solo-head'>projects</h1>
-</div>
 
 <div class="content">
-    <h2 class="content-subhead">Projects</h2>
+    <h1>Projects</h1>
 </div>
+
+
+<table class='pure-table'>
+    <tbody>
+    </tbody>
+</table>

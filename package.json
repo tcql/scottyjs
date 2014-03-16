@@ -9,9 +9,9 @@
   },
   "main": "app/index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "height": 600,
-    "width": 1000
+    "width": 800
   },
   "dependencies": {
     "nodewebkit": "^0.8.5",
