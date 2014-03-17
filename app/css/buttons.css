@@ -21,3 +21,9 @@
 .button-secondary {
     background: rgb(66, 184, 221); /* this is a light blue */
 }
+
+
+.input-button
+{
+    margin: 0.25em 0;
+}

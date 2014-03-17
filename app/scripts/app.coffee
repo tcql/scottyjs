@@ -2,8 +2,13 @@ window.scotty_lib = require("scotty-lib")
 window.scotty = scotty.initialize()
 
 $ ->
-    app = $.sammy "#main", ->
+    window.app = $.sammy "#main", ->
         @use('Handlebars', 'hb')
+        @use('FormBuilder')
+        @use('NestedParams')
+
+        Handlebars.registerHelper 'call', (context, options)->
+            console.log context
 
         @get '#/', (context)->
             @partial('templates/home.hb')
@@ -12,5 +17,5 @@ $ ->
         window.pPage = new ProjectsPage(@)
 
 
-    app.run('#/')
+    window.app.run('#/')
 
