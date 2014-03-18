@@ -22,12 +22,12 @@
                     <td>{{this.name}}</td>
                     <td>{{this.phaser_version}}</td>
                     <td>
-                        <a href="#/projects/edit/{{this.name}}" class='button-secondary pure-button'>
+                        <a href="#/projects/edit/{{this._id}}" class='button-secondary pure-button'>
                             <i class='fa fa-pencil'> </i>
                         </a>
                     </td>
                     <td>
-                        <a href="#/projects/delete/{{this.name}}" class='button-error pure-button'>
+                        <a href="#/projects/delete/{{this._id}}" class='button-error pure-button'>
                             <i class='fa fa-trash-o'> </i>
                         </a>
                     </td>

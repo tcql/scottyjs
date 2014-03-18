@@ -11,16 +11,14 @@ class window.ProjectsPage
         sammy.post '#/projects/create', (context)->
             self.routeCreate(context, @)
 
-        sammy.get '#/projects/delete/:name', (context)->
+        sammy.get '#/projects/delete/:id', (context)->
             self.routeDelete(context, @)
 
 
     routeIndex: (context, route)->
-        projects = scotty.projects.projects.map (elem)->
-            return elem.getMetadata()
-
-        route.projects = projects.getCollection()
-        route.partial('templates/projects/main.hb')
+        scotty.projects.projects.getAll (err, projects)=>
+            route.projects = projects
+            route.partial('templates/projects/main.hb')
 
 
     routeAdd: (context, route)->
@@ -30,29 +28,36 @@ class window.ProjectsPage
         $("#main").off('change').on 'change', '#file_upload', ()->
             $("#path").val($(this).val())
 
-        route.form = @_buildAddEditForm(route)
-
-        route.partial('templates/projects/add.hb')
+        @_buildAddEditForm route, (form)=>
+            route.form = form
+            route.partial('templates/projects/add.hb')
 
 
     routeCreate: (context, route)->
-        #console.log("creating")
-        scotty.projects.createProject(route.params['project'])
-        route.redirect("#/projects")
+        scotty.projects.create route.params['project'], {}, ()=>
+            route.redirect("#/projects")
 
 
     routeDelete: (context, route)->
-        console.log route.params["name"]
-        scotty.projects.deleteProject(route.params["name"])
+        console.log route.params["id"]
+        scotty.projects.delete route.params["id"], (err, del)->
+            route.redirect("#/projects") if not err
 
 
 
-    _buildAddEditForm: (route)->
-        versions = scotty.versions.installed.getCollection()
-        form = new Sammy.FormBuilder('project', route.params.toHash())
+    _buildAddEditForm: (route, callback = ->)->
+        scotty.versions.versions.getInstalled (err, versions)=>
+            output_versions = []
 
-        return {
-            "name": form.text("name", {"class":"pure-input-1"})
-            "path": form.text("path", {"class": "pure-input-1", "readonly":"", "id": "path"})
-            "phaser_version": form.select("phaser_version", versions, {"class": "pure-input-1"})
-        }
+            for i in versions
+                output_versions.push i.name
+
+
+
+            form = new Sammy.FormBuilder('project', route.params.toHash())
+
+            callback({
+                "name": form.text("name", {"class":"pure-input-1"})
+                "path": form.text("path", {"class": "pure-input-1", "readonly":"", "id": "path"})
+                "phaser_version": form.select("phaser_version", output_versions, {"class": "pure-input-1"})
+            })

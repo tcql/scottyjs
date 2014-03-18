@@ -19,8 +19,9 @@ class window.VersionsPage
      * Responds to the index route for the versions page
     ###
     routeIndex: (context, route)=>
-        route.available = scotty.versions.getVersionData().getCollection()
-        route.partial('templates/versions/main.hb')
+        scotty.versions.versions.getAll (err, versions)=>
+            route.available = versions
+            route.partial('templates/versions/main.hb')
 
 
     ###
