@@ -14,6 +14,9 @@ class window.ProjectsPage
         sammy.get '#/projects/delete/:id', (context)->
             self.routeDelete(context, @)
 
+        sammy.get '#/projects/edit/:id', (context)->
+            self.routeEdit(context, @)
+
 
     routeIndex: (context, route)->
         scotty.projects.projects.getAll (err, projects)=>
@@ -28,35 +31,46 @@ class window.ProjectsPage
         $("#main").off('change').on 'change', '#file_upload', ()->
             $("#path").val($(this).val())
 
-        @_buildAddEditForm route, (form)=>
+        @_buildAddEditForm route.params.toHash(), (form)=>
             route.form = form
             route.partial('templates/projects/add.hb')
 
 
     routeCreate: (context, route)->
-        scotty.projects.create route.params['project'], {}, ()=>
-            route.redirect("#/projects")
+        project = route.params['project']
+
+        if project['_id']
+            id = project['_id']
+            scotty.projects.update id, project, (err, num, doc)=>
+                route.redirect("#/projects")
+        else
+            scotty.projects.create project, {}, ()=>
+                route.redirect("#/projects")
 
 
     routeDelete: (context, route)->
-        console.log route.params["id"]
         scotty.projects.delete route.params["id"], (err, del)->
             route.redirect("#/projects") if not err
 
 
+    routeEdit: (context, route)->
+        scotty.projects.projects.getById route.params['id'], (err, project)=>
+            # Pass on the project as params
+            route.redirect("#/projects/add", project)
 
-    _buildAddEditForm: (route, callback = ->)->
+
+
+    _buildAddEditForm: (params, callback = ->)->
         scotty.versions.versions.getInstalled (err, versions)=>
             output_versions = []
 
             for i in versions
                 output_versions.push i.name
 
-
-
-            form = new Sammy.FormBuilder('project', route.params.toHash())
+            form = new Sammy.FormBuilder('project', params)
 
             callback({
+                "id": form.hidden("_id")
                 "name": form.text("name", {"class":"pure-input-1"})
                 "path": form.text("path", {"class": "pure-input-1", "readonly":"", "id": "path"})
                 "phaser_version": form.select("phaser_version", output_versions, {"class": "pure-input-1"})
