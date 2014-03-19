@@ -9,7 +9,7 @@
   },
   "main": "app/index.html",
   "window": {
-    "toolbar": false,
+    "toolbar": true,
     "height": 600,
     "width": 800
   },
@@ -17,8 +17,7 @@
     "nodewebkit": "^0.8.5",
     "scotty-lib": "git://github.com/tchannel/scotty-lib.git#master",
     "bower": "^1.3.1",
-    "coffee-script": "^1.7.1",
-    "connect": "^2.14.3"
+    "coffee-script": "^1.7.1"
   },
   "devDependencies": {
     "grunt": "^0.4.4",

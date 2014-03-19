@@ -24,11 +24,18 @@ $ ->
 
 
         @get '#/examples', (context)->
-            window.open(
+            w = window.open(
                 "file://"+scotty.getExamplesDirectory()+"/examples/index.html",
                 "_blank",
-                "width=1300,height=700"
+                "width=1300,height=700,toolbar=yes"
             )
+            $(w).load ()->
+                console.log $(w.document.body).html()
+                console.log "hiii"
+                $(w.document.body).append("<script type='text/javascript' src='file:///home/tcql/Documents/scotty/scotty-gui/app/vendor/coffee-script/coffee-script.js'></script>")
+                $(w.document.body).append("<script type='text/coffeescript' src='file:///home/tcql/Documents/scotty/scotty-gui/app/scripts/devtools.coffee'></script>")
+
+
             @redirect("#/")
 
         window.vPage = new VersionsPage(@)
