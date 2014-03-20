@@ -1,6 +1,4 @@
 
-
-
 class window.scotty.gui.devTools
     constructor: (@document, @window)->
         @bindListener()
@@ -14,7 +12,7 @@ class window.scotty.gui.devTools
             nwindow.showDevTools()
 
     bindListener: ()=>
-        $(@document).keydown (e)->
+        $(@document).keydown (e)=>
             if ((e.ctrlKey) and (e.shiftKey) and (e.which is 73)) or (e.which is 117)
                 @toggle()
 

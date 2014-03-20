@@ -1,13 +1,3 @@
-window.scotty_lib = require("scotty-lib")
-window.scotty = scotty.initialize()
-
-connect = require('connect');
-
-console.log window.location
-# connect.createServer(
-#     connect.static(scotty.getExamplesDirectory())
-# ).listen(8081);
-
 
 $ ->
     console.log scotty

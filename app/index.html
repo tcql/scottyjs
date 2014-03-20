@@ -45,8 +45,8 @@
         </div>
 
         <script type='text/javascript'>
-            require("coffee-script/register");
-            window.scotty = require("scotty-lib");
+            window.scotty_lib = require("scotty-lib");
+            window.scotty = scotty_lib.initialize();
             window.scotty.gui = {};
         </script>
 
