@@ -67,10 +67,13 @@ class window.ProjectsPage
 
     routePlay: (context, route)->
         scotty.projects.projects.getById route.params['id'], (err, project)=>
-            w = window.open(
-                "file://"+project.path+"/index.html"
-                "_blank",
-                "width=1300,height=700,toolbar=yes"
+            scotty.gui.spawn(
+                "file://"+project.path+"/index.html",
+                {
+                    "width": 1300,
+                    "height": 700,
+                    "toolbar": "yes"
+                }
             )
 
             route.redirect("#/projects")

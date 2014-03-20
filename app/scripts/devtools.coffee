@@ -20,10 +20,11 @@ class window.scotty.gui.devTools
                 @window.location.reload()
 
 
-window.scotty.gui.spawn = (url, options)->
+window.scotty.gui.spawn = (url, options, attach_devtools = true)->
     w = nwgui.Window.open(url, options)
 
-    w.on 'loaded', ()->
-        w.window.nwgui = w.window.nwDispatcher.requireNwGui()
-        w.window.dev_tools = new scotty.gui.devTools(w.window.document, w.window)
+    if attach_devtools
+        w.on 'loaded', ()->
+            w.window.nwgui = w.window.nwDispatcher.requireNwGui()
+            w.window.dev_tools = new scotty.gui.devTools(w.window.document, w.window)
 
