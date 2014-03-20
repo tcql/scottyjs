@@ -31,6 +31,7 @@ class window.VersionsPage
      * phaser downloads
     ###
     routeRefreshDownloads: (context, route)=>
+        route.message = "Refreshing..."
         route.partial('templates/loading.hb')
 
         # Fetch the version list and redirect
@@ -40,6 +41,9 @@ class window.VersionsPage
 
     routeDownloadVersion: (context, route)=>
         version = route.params['version']
+
+        route.message = "Downloading..."
+        route.submessage = "<em>This may take several minutes</em>"
 
         route.partial('templates/loading.hb')
 

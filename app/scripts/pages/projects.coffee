@@ -17,6 +17,9 @@ class window.ProjectsPage
         sammy.get '#/projects/edit/:id', (context)->
             self.routeEdit(context, @)
 
+        sammy.get '#/projects/play/:id', (context)->
+            self.routePlay(context, @)
+
 
     routeIndex: (context, route)->
         scotty.projects.projects.getAll (err, projects)=>
@@ -37,6 +40,9 @@ class window.ProjectsPage
 
 
     routeCreate: (context, route)->
+        route.message = "Saving..."
+        route.partial('templates/loading.hb')
+
         project = route.params['project']
 
         if project['_id']
@@ -58,6 +64,16 @@ class window.ProjectsPage
             # Pass on the project as params
             route.redirect("#/projects/add", project)
 
+
+    routePlay: (context, route)->
+        scotty.projects.projects.getById route.params['id'], (err, project)=>
+            w = window.open(
+                "file://"+project.path+"/index.html"
+                "_blank",
+                "width=1300,height=700,toolbar=yes"
+            )
+
+            route.redirect("#/projects")
 
 
     _buildAddEditForm: (params, callback = ->)->

@@ -12,6 +12,7 @@
             <tr>
                 <th>Name</th>
                 <th>Phaser Version</th>
+                <th>Play</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -21,6 +22,11 @@
                 <tr>
                     <td>{{this.name}}</td>
                     <td>{{this.phaser_version}}</td>
+                    <td>
+                        <a href="#/projects/play/{{this._id}}" class='button-success pure-button'>
+                            <i class='fa fa-play-circle'> </i>
+                        </a>
+                    </td>
                     <td>
                         <a href="#/projects/edit/{{this._id}}" class='button-secondary pure-button'>
                             <i class='fa fa-pencil'> </i>

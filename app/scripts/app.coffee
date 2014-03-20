@@ -10,6 +10,8 @@ console.log window.location
 
 
 $ ->
+    console.log scotty
+    window.dev_tools = new window.scotty.gui.devTools(document, window)
 
     window.app = $.sammy "#main", ->
         @use('Handlebars', 'hb')
@@ -24,19 +26,17 @@ $ ->
 
 
         @get '#/examples', (context)->
-            w = window.open(
+            w = scotty.gui.spawn(
                 "file://"+scotty.getExamplesDirectory()+"/examples/index.html",
-                "_blank",
-                "width=1300,height=700,toolbar=yes"
+                {
+                    "width":1300,
+                    "height":700,
+                    "toolbar":yes
+                }
             )
-            $(w).load ()->
-                console.log $(w.document.body).html()
-                console.log "hiii"
-                $(w.document.body).append("<script type='text/javascript' src='file:///home/tcql/Documents/scotty/scotty-gui/app/vendor/coffee-script/coffee-script.js'></script>")
-                $(w.document.body).append("<script type='text/coffeescript' src='file:///home/tcql/Documents/scotty/scotty-gui/app/scripts/devtools.coffee'></script>")
-
 
             @redirect("#/")
+
 
         window.vPage = new VersionsPage(@)
         window.pPage = new ProjectsPage(@)
