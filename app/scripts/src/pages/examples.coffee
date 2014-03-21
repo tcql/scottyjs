@@ -35,4 +35,4 @@ class window.ExamplesPage
             }
         )
 
-        @redirect("#/examples")
+        route.redirect("#/examples")

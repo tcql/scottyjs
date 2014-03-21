@@ -40,10 +40,10 @@ class window.ProjectsPage
 
 
     routeCreate: (context, route)->
+        project = route.params['project']
+
         route.message = "Saving..."
         route.partial('templates/loading.hb')
-
-        project = route.params['project']
 
         if project['_id']
             id = project['_id']
