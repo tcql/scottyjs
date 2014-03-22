@@ -32,7 +32,8 @@ class window.ExamplesPage
                 "width":1300,
                 "height":700,
                 "toolbar":yes
-            }
+            },
+            false
         )
 
         route.redirect("#/examples")

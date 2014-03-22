@@ -9,7 +9,7 @@ module.exports = (grunt)->
                 win: true, # We want to build it for win
                 linux32: false, # We don't need linux32
                 linux64: false # We don't need linux64
-                zip: false,
+                zip: false, # Don't zip the app contents (Zipping slows down startup)
             src: ['./**/*'] # Your node-wekit app
         coffee:
             scotty:
@@ -36,10 +36,17 @@ module.exports = (grunt)->
                     dest: 'app/scripts/build/'
                 }]
 
+            clean:
+                build:
+                    src: ['build']
+
+
+
 
     grunt.loadNpmTasks('grunt-node-webkit-builder')
     grunt.loadNpmTasks('grunt-contrib-uglify')
     grunt.loadNpmTasks('grunt-contrib-coffee')
+    grunt.loadNpmTasks('grunt-contrib-clean')
 
     grunt.registerTask 'scotty:build', ['coffee']# , 'uglify']
-    grunt.registerTask 'deploy', ['scotty:build', 'nodewebkit']
+    grunt.registerTask 'deploy', ['scotty:build', 'uglify', 'nodewebkit']

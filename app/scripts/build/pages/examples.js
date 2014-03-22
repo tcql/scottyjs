@@ -41,7 +41,7 @@
         "width": 1300,
         "height": 700,
         "toolbar": true
-      });
+      }, false);
       return route.redirect("#/examples");
     };
 
