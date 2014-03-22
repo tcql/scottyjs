@@ -11,6 +11,18 @@
       this.use('Handlebars', 'hb');
       this.use('FormBuilder');
       this.use('NestedParams');
+      this.swap = function(content, callback) {
+        var context;
+        context = this;
+        return context.$element().fadeOut('fast', function() {
+          context.$element().html(content);
+          return context.$element().fadeIn('fast', function() {
+            if (callback) {
+              return callback.apply();
+            }
+          });
+        });
+      };
       pages = [];
       pages.push(new HomePage(this));
       pages.push(new VersionsPage(this));

@@ -14,6 +14,15 @@ $ ->
         @use('FormBuilder')
         @use('NestedParams')
 
+        @swap = (content, callback)->
+            context = @
+
+            context.$element().fadeOut 'fast', ()->
+                context.$element().html(content)
+                context.$element().fadeIn 'fast', ()->
+                    if callback
+                        callback.apply()
+
         pages = []
 
         pages.push new HomePage(@)

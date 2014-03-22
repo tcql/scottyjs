@@ -21,9 +21,12 @@
     }
 
     HomePage.prototype.routeIndex = function(context, route) {
-      route.partial('templates/home.hb');
-      route.renderEach("templates/home/feedrow.hb", this.feeds).appendTo(".feeds");
-      return this.renderAllFeeds(this.feeds, route);
+      return route.render('templates/home.hb').swap((function(_this) {
+        return function() {
+          route.renderEach("templates/home/feedrow.hb", _this.feeds).appendTo(".feeds");
+          return _this.renderAllFeeds(_this.feeds, route);
+        };
+      })(this));
     };
 
     HomePage.prototype.renderAllFeeds = function(feeds, route) {

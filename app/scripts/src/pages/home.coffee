@@ -20,11 +20,10 @@ class window.HomePage
 
 
     routeIndex: (context, route)=>
+        route.render('templates/home.hb').swap ()=>
+            route.renderEach("templates/home/feedrow.hb", @feeds).appendTo(".feeds")
 
-        route.partial('templates/home.hb')
-        route.renderEach("templates/home/feedrow.hb", @feeds).appendTo(".feeds")
-
-        @renderAllFeeds(@feeds, route)
+            @renderAllFeeds(@feeds, route)
 
 
     renderAllFeeds: (feeds, route)->
