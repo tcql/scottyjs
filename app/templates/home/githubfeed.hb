@@ -1,4 +1,4 @@
-<tr>
+<tr class='fade-in'>
 
     <td>
         <a class='open-external' href='{{icon_link}}'>

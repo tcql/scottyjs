@@ -10,6 +10,7 @@
 }
 
 #main .header.large-header {
+
     height: 116px !important;
     position:fixed;
     top:0px;
@@ -50,6 +51,15 @@
     background-color:#333;
 }
 
+.fade-in {
+    opacity:0;
+    -webkit-transition: opacity 0.5s ease-in;
+    transition:opacity 0.5s ease-in;
+}
+
+.fade-in-visible {
+    opacity:1;
+}
 
 .pull-left {
     float:left;

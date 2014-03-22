@@ -46,7 +46,9 @@
           return $("" + feed.options.feed_class + " .loading").html("No activity.");
         } else {
           $("." + feed.options.feed_class + " .loading").hide();
-          return route.renderEach("" + feed.template, results).appendTo("." + feed.options.feed_class + " .feed-table");
+          return route.renderEach("" + feed.template, results).appendTo("." + feed.options.feed_class + " .feed-table").then(function() {
+            return $("." + feed.options.feed_class + " .feed-table .fade-in").addClass('fade-in-visible');
+          });
         }
       });
     };

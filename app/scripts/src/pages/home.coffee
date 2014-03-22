@@ -42,3 +42,5 @@ class window.HomePage
             else
                 $(".#{feed.options.feed_class} .loading").hide()
                 route.renderEach("#{feed.template}", results).appendTo(".#{feed.options.feed_class} .feed-table")
+                    .then ()->
+                        $(".#{feed.options.feed_class} .feed-table .fade-in").addClass 'fade-in-visible'
