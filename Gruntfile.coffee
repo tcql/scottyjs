@@ -1,16 +1,50 @@
+fs = require 'fs-extra'
+
 module.exports = (grunt)->
+    nw_version = '0.9.2'
 
     grunt.initConfig
+        clean:
+            build:
+                options:
+                    force: true
+                src: ['build/app']
+        copy:
+            build:
+                cwd: '.'
+                src: [
+                    'app/css/**/*',
+                    'app/scripts/build/**/*',
+                    'app/templates/**/*',
+                    'app/vendor/**/*',
+                    'app/**/*.html',
+                    'package.json',
+                    'node_modules/nodewebkit/**/*'
+                ]
+                dest: 'build/app',
+                expand: true
+            win_build:
+                cwd: 'build/app'
+                src: '*'
+                dest: './build/webkitbuilds/releases/scotty-gui/win/scotty-gui/'
+                expand:true
+            win_build_exe:
+                src: 'build/webkitbuilds/cache/win/'+nw_version+'/nw.exe'
+                dest: './build/webkitbuilds/releases/scotty-gui/win/scotty-gui/scotty-gui.exe'
+                flatten: true
+        exec:
+            build: 'cd build/app; npm install --production'
         nodewebkit:
             options:
-                version: '0.9.2',
-                build_dir: '../webkitbuilds', # Where the build version of my node-webkit app is saved
+                version: nw_version
+                build_dir: 'build/webkitbuilds', # Where the build version of my node-webkit app is saved
                 mac: false, # We want to build it for mac
                 win: true, # We want to build it for win
                 linux32: false, # We don't need linux32
                 linux64: false # We don't need linux64
-                zip: false, # Don't zip the app contents (Zipping slows down startup)
-            src: ['./**/*'] # Your node-wekit app
+                zip: true,
+                keep_nw: true,
+            src: ['./build/app/**/*'] # Your node-wekit app
         coffee:
             scotty:
                 expand: true,
@@ -36,17 +70,26 @@ module.exports = (grunt)->
                     dest: 'app/scripts/build/'
                 }]
 
-            clean:
-                build:
-                    src: ['build']
 
 
 
 
-    grunt.loadNpmTasks('grunt-node-webkit-builder')
-    grunt.loadNpmTasks('grunt-contrib-uglify')
-    grunt.loadNpmTasks('grunt-contrib-coffee')
-    grunt.loadNpmTasks('grunt-contrib-clean')
+    grunt.loadNpmTasks 'grunt-node-webkit-builder'
+    grunt.loadNpmTasks 'grunt-contrib-uglify'
+    grunt.loadNpmTasks 'grunt-contrib-coffee'
+    grunt.loadNpmTasks 'grunt-contrib-clean'
+    grunt.loadNpmTasks 'grunt-contrib-copy'
+    grunt.loadNpmTasks 'grunt-install-dependencies'
+    grunt.loadNpmTasks 'grunt-exec'
 
     grunt.registerTask 'scotty:build', ['coffee']# , 'uglify']
-    grunt.registerTask 'deploy', ['scotty:build', 'uglify', 'nodewebkit']
+
+
+    grunt.registerTask 'test', 'ee', ()->
+        console.log(grunt.config.get('nodewebkit.options.version'))
+
+
+    grunt.registerTask 'deploy', 'Builds distributables for scotty', ()->
+        grunt.task.run ['clean', 'copy:build', 'exec', 'nodewebkit', 'copy:win_build', 'copy:win_build_exe']
+
+
