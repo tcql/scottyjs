@@ -33,7 +33,7 @@ class window.HomePage
 
 
     renderFeed: (feed, route)->
-        feed.fetch 1, 10, (err, results)->
+        feed.fetch 1, 20, (err, results)->
             if err
                 msg = feed.parseError(err)
                 $(".#{feed.options.feed_class} .loading").html("There was an error retrieving the feed. #{msg}")

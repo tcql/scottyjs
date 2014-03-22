@@ -37,7 +37,7 @@
     };
 
     HomePage.prototype.renderFeed = function(feed, route) {
-      return feed.fetch(1, 10, function(err, results) {
+      return feed.fetch(1, 20, function(err, results) {
         var msg;
         if (err) {
           msg = feed.parseError(err);

@@ -14,7 +14,7 @@ class window.GithubFeed
             per_page: num_per_page,
             (err, results)=>
                 return callback(err, null) if err
-                console.log results
+
                 activity = []
                 for commit in results
                     activity.push @makeRecord(commit)

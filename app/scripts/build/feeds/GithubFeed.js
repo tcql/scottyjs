@@ -28,7 +28,6 @@
           if (err) {
             return callback(err, null);
           }
-          console.log(results);
           activity = [];
           for (_i = 0, _len = results.length; _i < _len; _i++) {
             commit = results[_i];
