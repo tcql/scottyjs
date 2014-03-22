@@ -75,7 +75,7 @@ module.exports = (grunt)->
                 expand: true
             win_build:
                 cwd: 'build/app'
-                src: '*/**'
+                src: '**'
                 dest: './build/webkitbuilds/releases/scotty-gui/win/scotty-gui/'
                 expand:true
             win_build_exe:
