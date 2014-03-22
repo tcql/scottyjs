@@ -24,6 +24,7 @@ module.exports = (grunt)->
                     'app/css/**/*',
                     'app/scripts/build/**/*',
                     'app/templates/**/*',
+                    'app/images/**/*',
                     'app/vendor/**/*',
                     'app/**/*.html',
                     'package.json',
@@ -33,7 +34,7 @@ module.exports = (grunt)->
                 expand: true
             win_build:
                 cwd: 'build/app'
-                src: '*'
+                src: '*/**'
                 dest: './build/webkitbuilds/releases/scotty-gui/win/scotty-gui/'
                 expand:true
             win_build_exe:
@@ -46,10 +47,10 @@ module.exports = (grunt)->
             options:
                 version: nw_version
                 build_dir: 'build/webkitbuilds', # Where the build version of my node-webkit app is saved
-                mac: false, # We want to build it for mac
+                mac: true, # We want to build it for mac
                 win: true, # We want to build it for win
-                linux32: false, # We don't need linux32
-                linux64: false # We don't need linux64
+                linux32: true, # We don't need linux32
+                linux64: true # We don't need linux64
                 zip: true,
                 keep_nw: true,
             src: ['./build/app/**/*'] # Your node-wekit app
@@ -95,6 +96,6 @@ module.exports = (grunt)->
 
 
     grunt.registerTask 'deploy', 'Builds distributables for scotty', ()->
-        grunt.task.run ['clean', 'copy:build', 'exec', 'nodewebkit', 'copy:win_build', 'copy:win_build_exe']
+        grunt.task.run ['clean:build', 'copy:build', 'exec', 'nodewebkit', 'copy:win_build', 'copy:win_build_exe']
 
 

@@ -7,9 +7,10 @@
 
         <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/pure.css" />
+        <link rel="stylesheet" href="css/layouts/side-menu.css" />
         <link rel="stylesheet" href="css/buttons.css" />
         <link rel="stylesheet" href="css/feeds.css" />
-        <link rel="stylesheet" href="css/layouts/side-menu.css" />
+        <link rel="stylesheet" href="css/layout.custom.css" />
 
 
     </head>
@@ -36,15 +37,18 @@
                         </li>
 
                         <li><a href="http://github.com/photonstorm/phaser" class="open-external">phaser <i class="fa fa-github"></i></a></li>
-                        <li><a href="http://github.com/tchannel/scotty-lib" class="open-external">scotty <i class="fa fa-github"></i></a></li>
+                        <li><a href="http://github.com/tchannel/scottyjs" class="open-external">scotty <i class="fa fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
 
             <div id="main">
             </div>
-        </div>
 
+        </div>
+        <div class='instruction-footer'>
+            F5 to refresh. F6 to open dev tools.
+        </div>
         <script type='text/javascript'>
             window.scotty_lib = require("scotty-lib");
             window.scotty = scotty_lib.initialize();

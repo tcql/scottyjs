@@ -1,0 +1,10 @@
+.instruction-footer
+{
+    background-color:#404040;
+    color: #eee;
+    position:fixed;
+    padding:8px 20px;
+    bottom:0px;
+    left:150px;
+    right:0px;
+}
