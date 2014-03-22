@@ -4,7 +4,7 @@ $ ->
     window.dev_tools = new window.scotty.gui.devTools(document, window)
 
 
-    $(".open-external").click (e)->
+    $("#layout").on 'click', '.open-external', (e)->
         e.preventDefault()
         nwgui.Shell.openExternal($(this).attr('href'))
 
@@ -14,19 +14,17 @@ $ ->
         @use('FormBuilder')
         @use('NestedParams')
 
-
-        @get '#/', (context)->
-            @partial('templates/home.hb')
-
-
         pages = []
 
-        pages.push(new VersionsPage(@))
-        pages.push(new ProjectsPage(@))
-        pages.push(new ExamplesPage(@))
+        pages.push new HomePage(@)
+        pages.push new VersionsPage(@)
+        pages.push new ProjectsPage(@)
+        pages.push new ExamplesPage(@)
 
         # pretty much just for debuggy stuff?
         window.pages = pages
 
     window.app.run('#/')
+
+    nwgui.Window.get().show()
 

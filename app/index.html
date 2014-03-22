@@ -5,10 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>scotty</title>
 
-        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/pure.css">
-        <link rel="stylesheet" href="css/buttons.css">
-        <link rel="stylesheet" href="css/layouts/side-menu.css">
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/pure.css" />
+        <link rel="stylesheet" href="css/buttons.css" />
+        <link rel="stylesheet" href="css/feeds.css" />
+        <link rel="stylesheet" href="css/layouts/side-menu.css" />
 
 
     </head>
@@ -45,7 +46,6 @@
         </div>
 
         <script type='text/javascript'>
-            require("coffee-script/register")
             window.scotty_lib = require("scotty-lib");
             window.scotty = scotty_lib.initialize();
             window.scotty.gui = {};
@@ -57,14 +57,17 @@
         <script type='text/javascript' src="vendor/sammy/sammy.handlebars.js"></script>
         <script type='text/javascript' src="vendor/sammy/sammy.form.js"></script>
         <script type='text/javascript' src="vendor/sammy/sammy.nested_params.js"></script>
+        <script type='text/javascript' src="vendor/moment/moment.min.js"></script>
 
         <script type='text/javascript' src="vendor/pure/ui.js"></script>
 
         <script type='text/javascript' src='scripts/build/pages/versions.js'></script>
         <script type='text/javascript' src='scripts/build/pages/projects.js'></script>
         <script type='text/javascript' src='scripts/build/pages/examples.js'></script>
-
+        <script type='text/javascript' src='scripts/build/pages/home.js'></script>
         <script type='text/javascript' src="scripts/build/devtools.js"></script>
+
+        <script type='text/javascript' src="scripts/build/feeds/GithubFeed.js"></script>
 
         <script type='text/javascript' src='scripts/build/app.js'></script>
 

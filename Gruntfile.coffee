@@ -4,11 +4,19 @@ module.exports = (grunt)->
     nw_version = '0.9.2'
 
     grunt.initConfig
+        watch:
+            coffee:
+                files: ['app/scripts/src/**/*.coffee', 'app/scripts/src/**/*.litcoffee'],
+                tasks: 'scotty:build'
         clean:
             build:
                 options:
                     force: true
                 src: ['build/app']
+            webkitbuilds:
+                options:
+                    fore: true
+                src: ['build/webkitbuilds']
         copy:
             build:
                 cwd: '.'
@@ -81,12 +89,9 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-contrib-copy'
     grunt.loadNpmTasks 'grunt-install-dependencies'
     grunt.loadNpmTasks 'grunt-exec'
+    grunt.loadNpmTasks 'grunt-contrib-watch'
 
     grunt.registerTask 'scotty:build', ['coffee']# , 'uglify']
-
-
-    grunt.registerTask 'test', 'ee', ()->
-        console.log(grunt.config.get('nodewebkit.options.version'))
 
 
     grunt.registerTask 'deploy', 'Builds distributables for scotty', ()->

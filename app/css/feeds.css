@@ -1,0 +1,27 @@
+.feed .feed-avatar {
+    -webkit-border-radius: 30px;
+    height:32px;
+    width:32px;
+}
+
+.feed {
+    font-size:0.8em;
+}
+
+.feed .feed-table-wrapper-wide {
+    overflow-y:auto;
+    max-height:200px;
+}
+
+.feed .feed-link {
+    text-decoration:none;
+    color: black;
+}
+
+.feed tr:hover {
+    background-color: #eee;
+}
+
+.feed .feed-date {
+    width: 70px;
+}
