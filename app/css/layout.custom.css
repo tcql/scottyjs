@@ -1,6 +1,6 @@
 .instruction-footer
 {
-    background-color:#404040;
+    background-color:#333;
     color: #eee;
     position:fixed;
     padding:8px 20px;
@@ -8,3 +8,53 @@
     left:150px;
     right:0px;
 }
+
+#main .header.large-header {
+    height: 116px !important;
+    position:fixed;
+    top:0px;
+    left:150px;
+    right:0px;
+    z-index:6000;
+}
+
+#main .header h1
+{
+    margin-top:15px;
+    margin-right:10px;
+    font-weight:bold;
+    font-size: 2em;
+}
+
+#main .header.small-header {
+    text-align:left;
+    padding:5px;
+    height:64px;
+    position:fixed;
+    top:0px;
+    left:150px;
+    right:0px;
+    z-index:6000;
+}
+
+#main .content.large-header {
+    margin-top:130px;
+}
+
+#main .content.small-header {
+    margin-top:90px;
+}
+
+
+#menu .active-link {
+    background-color:#333;
+}
+
+
+.pull-left {
+    float:left;
+}
+
+.pull-right {
+    float:right;
+};

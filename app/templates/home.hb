@@ -1,9 +1,8 @@
-<div class="header">
-    <h1>scotty</h1>
-    <h2>A project toolkit for phaser.js</h2>
+<div class="header large-header">
+    <img src="images/scotty2.png" />
 </div>
 
-<div class="content">
+<div class="content large-header">
     <div class='feeds pure-g'></div>
 </div>
 

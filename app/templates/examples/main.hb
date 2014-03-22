@@ -1,5 +1,9 @@
-<div class="content">
-    <h1>Examples</h1>
+<div class="header small-header">
+    <img src="images/scotty-small.png" />
+    <h1 class='pull-right'>Examples</h1>
+</div>
+
+<div class="content small-header">
     <p>scotty lets you download and view the phaser examples.</p>
 
     {{#if installed}}

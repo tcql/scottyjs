@@ -1,10 +1,11 @@
-{{!-- <div class="header">
-    <h1 class='solo-head'>phaser versions</h1>
-</div> --}}
+<div class="header small-header">
+    <img src="images/scotty-small.png" />
+    <h1 class='pull-right'>
+        Phaser Versions
+    </h1>
+</div>
 
-<div class="content">
-
-    <h1>Available Versions</h1>
+<div class="content small-header">
     <p>
         <a href="#/versions/refresh" class='button-secondary pure-button'>
             <i class='fa fa-refresh'> </i> Refresh List

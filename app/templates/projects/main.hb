@@ -1,6 +1,9 @@
+<div class="header small-header">
+    <img src="images/scotty-small.png" />
+    <h1 class='pull-right'>Projects</h1>
+</div>
 
-<div class="content">
-    <h1>Projects</h1>
+<div class="content small-header">
     <p>
         <a href="#/projects/add" class='button-success pure-button'>
             <i class='fa fa-plus'> </i> Add Project
