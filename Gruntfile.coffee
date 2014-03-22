@@ -17,6 +17,47 @@ module.exports = (grunt)->
                 options:
                     fore: true
                 src: ['build/webkitbuilds']
+        compress:
+            win:
+                options:
+                    archive: "build/releases/win.zip"
+                files: [
+                    {
+                        cwd: 'build/webkitbuilds/releases/scotty-gui/win/'
+                        expand: true
+                        src: ['**']
+                    }
+                ]
+            mac:
+                options:
+                    archive: "build/releases/mac.zip"
+                files: [
+                    {
+                        cwd: 'build/webkitbuilds/releases/scotty-gui/mac/'
+                        expand: true
+                        src: ['**']
+                    }
+                ]
+            lin32:
+                options:
+                    archive: "build/releases/linux32.zip"
+                files: [
+                    {
+                        cwd: 'build/webkitbuilds/releases/scotty-gui/linux32/'
+                        expand: true
+                        src: ['**']
+                    }
+                ]
+            lin64:
+                options:
+                    archive: "build/releases/linux64.zip"
+                files: [
+                    {
+                        cwd: 'build/webkitbuilds/releases/scotty-gui/linux64/'
+                        expand: true
+                        src: ['**']
+                    }
+                ]
         copy:
             build:
                 cwd: '.'
@@ -91,11 +132,23 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-install-dependencies'
     grunt.loadNpmTasks 'grunt-exec'
     grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-contrib-compress'
 
     grunt.registerTask 'scotty:build', ['coffee']# , 'uglify']
 
 
     grunt.registerTask 'deploy', 'Builds distributables for scotty', ()->
-        grunt.task.run ['clean:build', 'copy:build', 'exec', 'nodewebkit', 'copy:win_build', 'copy:win_build_exe']
+        grunt.task.run [
+            'clean:build',
+            'copy:build',
+            'exec',
+            'nodewebkit',
+            'copy:win_build',
+            'copy:win_build_exe',
+            'compress:win',
+            'compress:mac',
+            'compress:lin64',
+            'compress:lin32'
+        ]
 
 
