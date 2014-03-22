@@ -36,6 +36,10 @@ class window.ProjectsPage
 
         @_buildAddEditForm route.params.toHash(), (form)=>
             route.form = form
+            if route.params['name']
+                route.editing = true
+            else
+                route.editing = false
             route.partial('templates/projects/add.hb')
 
 
@@ -43,7 +47,7 @@ class window.ProjectsPage
         project = route.params['project']
 
         route.message = "Saving..."
-        route.partial('templates/loading.hb')
+        route.render('templates/loading.hb').swap()
 
         if project['_id']
             id = project['_id']

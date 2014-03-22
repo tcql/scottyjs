@@ -42,6 +42,11 @@
       return this._buildAddEditForm(route.params.toHash(), (function(_this) {
         return function(form) {
           route.form = form;
+          if (route.params['name']) {
+            route.editing = true;
+          } else {
+            route.editing = false;
+          }
           return route.partial('templates/projects/add.hb');
         };
       })(this));
@@ -51,7 +56,7 @@
       var id, project;
       project = route.params['project'];
       route.message = "Saving...";
-      route.partial('templates/loading.hb');
+      route.render('templates/loading.hb').swap();
       if (project['_id']) {
         id = project['_id'];
         return scotty.projects.update(id, project, (function(_this) {

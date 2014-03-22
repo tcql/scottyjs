@@ -1,46 +1,57 @@
-<div class="content">
-    <h1>Projects</h1>
+<div class="header small-header">
+    <img src="images/scotty-small.png" />
 
-<form class="pure-form pure-form-stacked project-add-form" method="POST" action="#/projects/create">
-    <fieldset>
-        <legend>Add Project</legend>
+    <h1 class='pull-right'>
+        {{#if editing}}
+            Edit Project
+        {{else}}
+            Add Project
+        {{/if}}
+    </h1>
+</div>
 
-        <div class='pure-g'>
-            <div class='pure-u-1-2'>
+<div class="content small-header">
 
-                <div class='pure-u-1'>
-                    <label for="name">Project Name</label>
-                    {{{ form.name }}}
+    <form class="pure-form pure-form-stacked project-add-form" method="POST" action="#/projects/create">
+        <fieldset>
+            <legend>Add Project</legend>
 
-                </div>
+            <div class='pure-g'>
+                <div class='pure-u-1-2'>
 
+                    <div class='pure-u-1'>
+                        <label for="name">Project Name</label>
+                        {{{ form.name }}}
 
-                <div class='pure-u-1'>
-                    <label for="phaser_version">Phaser Version</label>
-                    {{{ form.phaser_version }}}
-                </div>
-
-                <div class='pure-u-1'>
-                    <label for="path">Project Path</label>
-                </div>
-
-                <div class='pure-u-1'>
-                    <div class='pure-u-16-24'>
-                        {{{ form.path }}}
                     </div>
-                    <div class='pure-u-7-24'>
-                        <a class="file-upload-button input-button pure-button button-secondary">
-                            <i class="fa fa-folder-open"> </i> Select
-                        </a>
+
+
+                    <div class='pure-u-1'>
+                        <label for="phaser_version">Phaser Version</label>
+                        {{{ form.phaser_version }}}
+                    </div>
+
+                    <div class='pure-u-1'>
+                        <label for="path">Project Path</label>
+                    </div>
+
+                    <div class='pure-u-1'>
+                        <div class='pure-u-16-24'>
+                            {{{ form.path }}}
+                        </div>
+                        <div class='pure-u-7-24'>
+                            <a class="file-upload-button input-button pure-button button-secondary">
+                                <i class="fa fa-folder-open"> </i> Select
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        {{{ form.id }}}
-        <input style='display:none;' id='file_upload' type="file" nwdirectory />
+            {{{ form.id }}}
+            <input style='display:none;' id='file_upload' type="file" nwdirectory />
 
-        <button type="submit" class="pure-button button-success">Create</button>
-    </fieldset>
-</form>
+            <button type="submit" class="pure-button button-success">Create</button>
+        </fieldset>
+    </form>
 </div>
