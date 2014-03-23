@@ -11,9 +11,6 @@ class window.ProjectsPage
         sammy.post '#/projects/create', (context)->
             self.routeCreate(context, @)
 
-        sammy.get '#/projects/create', (context)->
-            console.log "blergh."
-
         sammy.get '#/projects/delete/:id', (context)->
             self.routeDelete(context, @)
 
@@ -47,11 +44,10 @@ class window.ProjectsPage
 
 
     routeCreate: (context, route)->
-
-        console.log "saving"
-
         route.message = "Saving Project..."
         route.render('templates/loading.hb').swap().then ()=>
+
+            # decide if we are saving or updating
             project = route.params['project']
             if project['_id']
                 id = project['_id']

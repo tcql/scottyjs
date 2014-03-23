@@ -12,9 +12,6 @@
       sammy.post('#/projects/create', function(context) {
         return self.routeCreate(context, this);
       });
-      sammy.get('#/projects/create', function(context) {
-        return console.log("blergh.");
-      });
       sammy.get('#/projects/delete/:id', function(context) {
         return self.routeDelete(context, this);
       });
@@ -56,7 +53,6 @@
     };
 
     ProjectsPage.prototype.routeCreate = function(context, route) {
-      console.log("saving");
       route.message = "Saving Project...";
       route.render('templates/loading.hb').swap().then((function(_this) {
         return function() {
