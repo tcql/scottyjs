@@ -38,12 +38,21 @@
     z-index:6000;
 }
 
-#main .content.large-header {
-    margin-top:130px;
+#main .scroll-container
+{
+    position: fixed;
+    overflow-y: auto;
+    left:150px;
+    right:0px;
+    bottom:35px;
 }
 
-#main .content.small-header {
-    margin-top:90px;
+#main .scroll-container.large-header {
+    top:116px;
+}
+
+#main .scroll-container.small-header {
+    top:75px;
 }
 
 

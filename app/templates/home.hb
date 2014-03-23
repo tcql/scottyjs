@@ -2,7 +2,9 @@
     <img src="images/scotty2.png" />
 </div>
 
-<div class="content large-header">
-    <div class='feeds pure-g'></div>
+<div class="scroll-container large-header">
+    <div class="content">
+        <div class='feeds pure-g'></div>
+    </div>
 </div>
 
