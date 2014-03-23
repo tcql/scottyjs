@@ -51,7 +51,7 @@
             {{{ form.id }}}
             <input style='display:none;' id='file_upload' type="file" nwdirectory />
 
-            <button type="submit" class="pure-button button-success">Create</button>
+            <input type="submit" class="pure-button button-success" value="Create" />
         </fieldset>
     </form>
 </div>

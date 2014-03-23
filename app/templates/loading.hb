@@ -10,4 +10,7 @@
     {{#if submessage}}
         {{{ submessage }}}
     {{/if}}
+    <p>
+        <img src='images/ajax-loader.gif' />
+    </p>
 </div>

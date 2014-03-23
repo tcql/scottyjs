@@ -12,6 +12,9 @@
       sammy.post('#/projects/create', function(context) {
         return self.routeCreate(context, this);
       });
+      sammy.get('#/projects/create', function(context) {
+        return console.log("blergh.");
+      });
       sammy.get('#/projects/delete/:id', function(context) {
         return self.routeDelete(context, this);
       });
@@ -53,24 +56,25 @@
     };
 
     ProjectsPage.prototype.routeCreate = function(context, route) {
-      var id, project;
-      project = route.params['project'];
-      route.message = "Saving...";
-      route.render('templates/loading.hb').swap();
-      if (project['_id']) {
-        id = project['_id'];
-        return scotty.projects.update(id, project, (function(_this) {
-          return function(err, num, doc) {
-            return route.redirect("#/projects");
-          };
-        })(this));
-      } else {
-        return scotty.projects.create(project, {}, (function(_this) {
-          return function() {
-            return route.redirect("#/projects");
-          };
-        })(this));
-      }
+      console.log("saving");
+      route.message = "Saving Project...";
+      route.render('templates/loading.hb').swap().then((function(_this) {
+        return function() {
+          var id, project;
+          project = route.params['project'];
+          if (project['_id']) {
+            id = project['_id'];
+            return scotty.projects.update(id, project, function(err, num, doc) {
+              return route.redirect("#/projects");
+            });
+          } else {
+            return scotty.projects.create(project, {}, function() {
+              return route.redirect("#/projects");
+            });
+          }
+        };
+      })(this));
+      return false;
     };
 
     ProjectsPage.prototype.routeDelete = function(context, route) {

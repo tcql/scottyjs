@@ -11,6 +11,9 @@ class window.ProjectsPage
         sammy.post '#/projects/create', (context)->
             self.routeCreate(context, @)
 
+        sammy.get '#/projects/create', (context)->
+            console.log "blergh."
+
         sammy.get '#/projects/delete/:id', (context)->
             self.routeDelete(context, @)
 
@@ -44,18 +47,21 @@ class window.ProjectsPage
 
 
     routeCreate: (context, route)->
-        project = route.params['project']
 
-        route.message = "Saving..."
-        route.render('templates/loading.hb').swap()
+        console.log "saving"
 
-        if project['_id']
-            id = project['_id']
-            scotty.projects.update id, project, (err, num, doc)=>
-                route.redirect("#/projects")
-        else
-            scotty.projects.create project, {}, ()=>
-                route.redirect("#/projects")
+        route.message = "Saving Project..."
+        route.render('templates/loading.hb').swap().then ()=>
+            project = route.params['project']
+            if project['_id']
+                id = project['_id']
+                scotty.projects.update id, project, (err, num, doc)=>
+                    route.redirect("#/projects")
+            else
+                scotty.projects.create project, {}, ()=>
+                    route.redirect("#/projects")
+
+        return false
 
 
     routeDelete: (context, route)->
