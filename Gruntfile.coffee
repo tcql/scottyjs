@@ -69,7 +69,6 @@ module.exports = (grunt)->
                     'app/vendor/**/*',
                     'app/**/*.html',
                     'package.json',
-                    'node_modules/nodewebkit/**/*'
                 ]
                 dest: 'build/app',
                 expand: true
