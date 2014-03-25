@@ -42,11 +42,16 @@ class window.VersionsPage
     routeDownloadVersion: (context, route)=>
         version = route.params['version']
 
-        route.message = "Downloading..."
-        route.submessage = "<em>This may take several minutes</em>"
+        # route.message = "Downloading..."
+        # route.submessage = "<em>This may take several minutes</em>"
 
-        route.partial('templates/loading.hb')
+        # route.partial('templates/loading.hb')
+
+        onDone = ()=>
+            context.redirect "#/versions"
+
+        onProgress = (state)->
+            console.log state
 
         # Download a version and redirect
-        scotty.versions.forceDownload version, ()=>
-            context.redirect("#/versions")
+        scotty.versions.forceDownload version, onDone, onProgress
