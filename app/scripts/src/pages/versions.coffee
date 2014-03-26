@@ -42,16 +42,27 @@ class window.VersionsPage
     routeDownloadVersion: (context, route)=>
         version = route.params['version']
 
-        # route.message = "Downloading..."
-        # route.submessage = "<em>This may take several minutes</em>"
+        download = new DownloadEvent(version)
 
-        # route.partial('templates/loading.hb')
+        window.queue.queueEvent download
 
-        onDone = ()=>
+        # window.queue.on 'progress', (e, item)->
+        #     console.log e.percent
+        #     console.log ['progress', e, item]
+
+        window.queue.on 'end', (item)->
+            if "#\/versions".match(app.last_route.path)?
+                context.redirect "#/versions"
+
+        ## Yup. that's a hack.
+        setTimeout ()->
             context.redirect "#/versions"
+        , 100
 
-        onProgress = (state)->
-            console.log state
+        # onDone = ()=>
+        #     context.redirect "#/versions"
 
-        # Download a version and redirect
-        scotty.versions.forceDownload version, onDone, onProgress
+        # onProgress = (state)->
+        #     console.log state
+        # # Download a version and redirect
+        # scotty.versions.forceDownload version, onDone, onProgress

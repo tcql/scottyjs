@@ -27,3 +27,9 @@
 {
     margin: 0.25em 0;
 }
+
+
+.pure-button .spinner {
+    vertical-align:middle;
+    margin-top: -3px;
+}

@@ -2,6 +2,17 @@
 $ ->
     window.nwgui = require('nw.gui')
     window.dev_tools = new window.scotty.gui.devTools(document, window)
+    window.queue = new QueueManager
+
+    window.queue.on 'progress', (progress)->
+        if progress.percent
+            $(".queue-progress").css width: "#{progress.percent}%"
+
+    window.queue.on 'queue:empty', ()->
+        $(".queue-progress").css width: "0%"
+
+    window.queue.on 'queue:changed', (number)->
+        $(".queue-text").text "#{number} items"
 
 
     $("#layout").on 'click', '.open-external', (e)->

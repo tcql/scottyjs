@@ -7,7 +7,20 @@
     bottom:0px;
     left:150px;
     right:0px;
+    font-size: 0.85em;
 }
+
+.instruction-footer .queue-text
+{
+    margin-top: 2px;
+    margin-left: 4px;
+}
+
+.instruction-footer .meter
+{
+    width: 180px;
+}
+
 
 #main .header.large-header {
 

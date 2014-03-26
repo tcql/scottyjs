@@ -54,20 +54,18 @@
     };
 
     VersionsPage.prototype.routeDownloadVersion = function(context, route) {
-      var onDone, onProgress, version;
+      var download, version;
       version = route.params['version'];
-      route.message = "Downloading...";
-      route.submessage = "<em>This may take several minutes</em>";
-      route.partial('templates/loading.hb');
-      onDone = (function(_this) {
-        return function() {
+      download = new DownloadEvent(version);
+      window.queue.queueEvent(download);
+      window.queue.on('end', function(item) {
+        if ("#\/versions".match(app.last_route.path) != null) {
           return context.redirect("#/versions");
-        };
-      })(this);
-      onProgress = function(state) {
-        return console.log(state);
-      };
-      return scotty.versions.forceDownload(version, onDone, onProgress);
+        }
+      });
+      return setTimeout(function() {
+        return context.redirect("#/versions");
+      }, 100);
     };
 
     return VersionsPage;

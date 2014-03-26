@@ -44,11 +44,19 @@
 
             <div id="main">
             </div>
-
         </div>
+
         <div class='instruction-footer'>
             F5 to refresh. F6 to open dev tools.
+
+            <div class='pull-right'>
+                <div class='queue-text pull-right'>0 items</div>
+                <div class='pull-right meter'>
+                    <span class='queue-progress' style='width:0%'></span>
+                </div>
+            </div>
         </div>
+
         <script type='text/javascript'>
             window.scotty_lib = require("scotty-lib");
             window.scotty = scotty_lib.initialize();
@@ -64,6 +72,9 @@
         <script type='text/javascript' src="vendor/moment/moment.min.js"></script>
 
         <script type='text/javascript' src="vendor/pure/ui.js"></script>
+
+        <script type='text/javascript' src='scripts/build/queue/QueueManager.js'></script>
+        <script type='text/javascript' src='scripts/build/queue/DownloadEvent.js'></script>
 
         <script type='text/javascript' src='scripts/build/pages/versions.js'></script>
         <script type='text/javascript' src='scripts/build/pages/projects.js'></script>
