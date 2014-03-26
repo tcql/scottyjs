@@ -56,7 +56,7 @@
     VersionsPage.prototype.routeDownloadVersion = function(context, route) {
       var download, version;
       version = route.params['version'];
-      download = new DownloadEvent(version);
+      download = new VersionDownload(version);
       window.queue.queueEvent(download);
       window.queue.on('end', function(item) {
         if ("#\/versions".match(app.last_route.path) != null) {

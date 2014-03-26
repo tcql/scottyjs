@@ -1,6 +1,6 @@
 Emitter = require('events').EventEmitter
 
-class window.DownloadEvent extends Emitter
+class window.VersionDownload extends Emitter
 
     constructor: (@version)->
         scotty.versions.versions.setInProgress(@version)

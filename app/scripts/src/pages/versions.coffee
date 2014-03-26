@@ -42,7 +42,7 @@ class window.VersionsPage
     routeDownloadVersion: (context, route)=>
         version = route.params['version']
 
-        download = new DownloadEvent(version)
+        download = new VersionDownload(version)
 
         window.queue.queueEvent download
 
