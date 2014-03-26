@@ -36,7 +36,8 @@
 
     QueueManager.prototype.queueEvent = function(event) {
       this.queued_events.push(event);
-      this.emit('queue:changed', this.getCount());
+      this.emit('queue:change', this.getCount());
+      this.emit('queue:add', event);
       event.on('end', this._onEventEnd);
       if (this.current == null) {
         return this.runNext();
@@ -44,13 +45,13 @@
     };
 
     QueueManager.prototype._onEventEnd = function() {
-      this.emit('end', this.current);
-      this.emit('queue:changed', this.getCount());
+      this.emit('queue:end', this.current);
+      this.emit('queue:change', this.getCount());
       return this.runNext();
     };
 
     QueueManager.prototype._onEventProgress = function(progress) {
-      return this.emit('progress', progress, this.current);
+      return this.emit('queue:progress', progress, this.current);
     };
 
     QueueManager.prototype.runNext = function() {
@@ -60,9 +61,10 @@
       }
       this.current = null;
       if (this.queued_events.length > 0) {
-        this.emit('queue:changed', this.getCount());
+        this.emit('queue:change', this.getCount());
         this.current = this.queued_events.shift();
         this.current.start();
+        this.emit('queue:start', this.current);
         return this.current.on('progress', this._onEventProgress);
       } else {
         this.emit('queue:empty');

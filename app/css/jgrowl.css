@@ -1,0 +1,8 @@
+div.jGrowl, div.jGrowl-notification
+{
+    min-height:20px !important;
+}
+div.jGrowl.bottom-right
+{
+    bottom:30px;
+}

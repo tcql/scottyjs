@@ -9,6 +9,10 @@ class window.VersionDownload extends Emitter
         scotty.versions.forceDownload @version, @_onDone, @_onProgress
 
 
+    getName: ()->
+        return "Version #{@version}"
+
+
     _onDone: (e)=>
         @emit('end', e)
 

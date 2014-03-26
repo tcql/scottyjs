@@ -18,6 +18,10 @@
       return scotty.examples.download(this._onDone, this._onProgress);
     };
 
+    ExamplesDownload.prototype.getName = function() {
+      return "Phaser Examples";
+    };
+
     ExamplesDownload.prototype._onDone = function(e) {
       return this.emit('end', e);
     };

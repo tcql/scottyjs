@@ -20,6 +20,10 @@
       return scotty.versions.forceDownload(this.version, this._onDone, this._onProgress);
     };
 
+    VersionDownload.prototype.getName = function() {
+      return "Version " + this.version;
+    };
+
     VersionDownload.prototype._onDone = function(e) {
       return this.emit('end', e);
     };

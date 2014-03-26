@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="css/feeds.css" />
         <link rel="stylesheet" href="css/layout.custom.css" />
         <link rel="stylesheet" href="css/progress.css" />
+        <link rel="stylesheet" href="vendor/jgrowl/jquery.jgrowl.min.css" />
+        <link rel="stylesheet" href="css/jgrowl.css" />
 
 
     </head>
@@ -64,6 +66,7 @@
         </script>
 
         <script type='text/javascript' src="vendor/jquery/jquery.min.js"></script>
+        <script type='text/javascript' src="vendor/jgrowl/jquery.jgrowl.min.js"></script>
         <script type='text/javascript' src="vendor/handlebars/handlebars-v1.3.0.js"></script>
         <script type='text/javascript' src="vendor/sammy/sammy.min.js"></script>
         <script type='text/javascript' src="vendor/sammy/sammy.handlebars.js"></script>
@@ -87,6 +90,13 @@
         <script type='text/javascript' src="scripts/build/feeds/GithubFeed.js"></script>
 
         <script type='text/javascript' src='scripts/build/app.js'></script>
+
+        <script type='text/javascript'>
+            $(function () {
+                $.jGrowl.defaults.position = "bottom-right";
+                $.jGrowl.defaults.closer = false;
+            });
+        </script>
 
     </body>
 </html>

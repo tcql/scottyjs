@@ -7,6 +7,8 @@ class window.ExamplesDownload extends Emitter
     start: ()->
         scotty.examples.download @_onDone, @_onProgress
 
+    getName: ()->
+        return "Phaser Examples"
 
     _onDone: (e)=>
         @emit('end', e)
