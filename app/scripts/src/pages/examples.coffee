@@ -21,8 +21,16 @@ class window.ExamplesPage
         route.message = "Downloading Examples..."
         route.submessage = "<em>This may take several minutes</em>"
         route.partial('templates/loading.hb')
-        scotty.examples.download ()=>
-            route.redirect("#/examples")
+
+        item = new ExamplesDownload
+
+        window.queue.queueEvent item
+
+        item.on 'end', ()=>
+           route.redirect("#/examples")
+
+        #scotty.examples.download ()=>
+
 
 
     routeOpen: (context, route)=>

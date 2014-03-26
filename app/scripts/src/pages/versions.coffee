@@ -46,11 +46,7 @@ class window.VersionsPage
 
         window.queue.queueEvent download
 
-        # window.queue.on 'progress', (e, item)->
-        #     console.log e.percent
-        #     console.log ['progress', e, item]
-
-        window.queue.on 'end', (item)->
+        download.on 'end', (item)->
             if "#\/versions".match(app.last_route.path)?
                 context.redirect "#/versions"
 
@@ -58,11 +54,3 @@ class window.VersionsPage
         setTimeout ()->
             context.redirect "#/versions"
         , 100
-
-        # onDone = ()=>
-        #     context.redirect "#/versions"
-
-        # onProgress = (state)->
-        #     console.log state
-        # # Download a version and redirect
-        # scotty.versions.forceDownload version, onDone, onProgress

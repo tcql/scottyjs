@@ -14,9 +14,17 @@ class window.QueueManager extends Emitter
         return @queued_events
 
 
+    getCount: ()->
+        count = 0
+        count++ if @current?
+        count += @queued_events.length
+
+        return count
+
+
     queueEvent: (event)->
         @queued_events.push event
-        @emit 'queue:changed', @queued_events.length
+        @emit 'queue:changed', @getCount()
         event.on 'end', @_onEventEnd
 
         if not @current?
@@ -26,7 +34,7 @@ class window.QueueManager extends Emitter
 
     _onEventEnd: ()=>
         @emit('end', @current)
-        @emit 'queue:changed', @queued_events.length
+        @emit 'queue:changed', @getCount()
         @runNext()
 
 
@@ -41,11 +49,12 @@ class window.QueueManager extends Emitter
 
         @current = null
         if @queued_events.length > 0
-            @emit 'queue:changed', @queued_events.length
+            @emit 'queue:changed', @getCount()
             @current = @queued_events.shift()
             @current.start()
             @current.on 'progress', @_onEventProgress
 
         else
             @emit('queue:empty')
+            @emit 'queue:changed', @getCount()
 

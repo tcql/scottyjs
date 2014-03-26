@@ -26,7 +26,7 @@
                             {{else}}
                                 {{#if this.in_progress}}
                                     <a class='pure-u-1 button-secondary pure-button pure-button-disabled'>
-                                        <img class='spinner' src='images/spinner.gif' /> In Progress
+                                        <i class='fa fa-refresh fa-spin'> </i> In Progress
                                     </a>
                                 {{else}}
                                     <a class='pure-u-1 button-success pure-button' href='#/versions/download/{{this.name}}'>

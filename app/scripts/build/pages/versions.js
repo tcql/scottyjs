@@ -58,7 +58,7 @@
       version = route.params['version'];
       download = new VersionDownload(version);
       window.queue.queueEvent(download);
-      window.queue.on('end', function(item) {
+      download.on('end', function(item) {
         if ("#\/versions".match(app.last_route.path) != null) {
           return context.redirect("#/versions");
         }
