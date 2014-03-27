@@ -16,17 +16,23 @@
 
 
         <p>
-            {{#if installed}}
-                <a href="#/examples/install" class='button-secondary pure-button'>
-                    <i class='fa fa-refresh'> </i> Update Examples
-                </a>
-                <a href="#/examples/open" class='button-success pure-button'>
-                    <i class='fa fa-external-link'> </i> View Examples
+            {{#if queued}}
+                <a class='button-secondary pure-button pure-button-disabled'>
+                    <i class='fa fa-refresh fa-spin'> </i> In Progress
                 </a>
             {{else}}
-                <a href="#/examples/install" class='button-secondary pure-button'>
-                    <i class='fa fa-download'> </i> Install Examples
-                </a>
+                {{#if installed}}
+                    <a href="#/examples/install" class='button-secondary pure-button'>
+                        <i class='fa fa-refresh'> </i> Update Examples
+                    </a>
+                    <a href="#/examples/open" class='button-success pure-button'>
+                        <i class='fa fa-external-link'> </i> View Examples
+                    </a>
+                {{else}}
+                    <a href="#/examples/install" class='button-secondary pure-button'>
+                        <i class='fa fa-download'> </i> Install Examples
+                    </a>
+                {{/if}}
             {{/if}}
         </p>
     </div>

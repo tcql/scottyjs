@@ -12,9 +12,10 @@
       }
     });
     window.queue.on('queue:empty', function() {
-      return $(".queue-progress").css({
+      $(".queue-progress").css({
         width: "0%"
       });
+      return $(".queue-text").text("0 items");
     });
     window.queue.on('queue:change', function(number) {
       return $(".queue-text").text("" + number + " items");

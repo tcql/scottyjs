@@ -20,22 +20,22 @@
     }
 
     ExamplesPage.prototype.routeIndex = function(context, route) {
+      route.queued = window.examples_queued;
       route.installed = scotty.examples.installed();
       return route.partial('templates/examples/main.hb');
     };
 
     ExamplesPage.prototype.routeInstall = function(context, route) {
       var item;
-      route.message = "Downloading Examples...";
-      route.submessage = "<em>This may take several minutes</em>";
-      route.partial('templates/loading.hb');
       item = new ExamplesDownload;
+      window.examples_queued = true;
       window.queue.queueEvent(item);
-      return item.on('end', (function(_this) {
+      item.on('end', (function(_this) {
         return function() {
-          return route.redirect("#/examples");
+          return window.examples_queued = false;
         };
       })(this));
+      return route.redirect("#/examples");
     };
 
     ExamplesPage.prototype.routeOpen = function(context, route) {

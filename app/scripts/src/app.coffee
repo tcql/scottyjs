@@ -11,6 +11,7 @@ $ ->
 
     window.queue.on 'queue:empty', ()->
         $(".queue-progress").css width: "0%"
+        $(".queue-text").text "0 items"
 
     window.queue.on 'queue:change', (number)->
         $(".queue-text").text "#{number} items"
