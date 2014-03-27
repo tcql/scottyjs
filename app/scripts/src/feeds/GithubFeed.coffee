@@ -22,7 +22,10 @@ class window.GithubFeed
                 callback(null, activity)
 
     parseError: (error)->
-        return $.parseJSON(error.message).message
+        try
+            return $.parseJSON(error.message).message
+        catch e
+            return error
 
 
     makeRecord: (result)->

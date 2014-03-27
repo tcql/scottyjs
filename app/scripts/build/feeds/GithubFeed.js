@@ -39,7 +39,13 @@
     };
 
     GithubFeed.prototype.parseError = function(error) {
-      return $.parseJSON(error.message).message;
+      var e;
+      try {
+        return $.parseJSON(error.message).message;
+      } catch (_error) {
+        e = _error;
+        return error;
+      }
     };
 
     GithubFeed.prototype.makeRecord = function(result) {
