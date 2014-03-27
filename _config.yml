@@ -1,0 +1,4 @@
+name: scotty.js
+markdown: redcarpet
+pygments: true
+baseurl: /scottyjs
