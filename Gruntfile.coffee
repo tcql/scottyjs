@@ -4,6 +4,7 @@ module.exports = (grunt)->
     nw_version = '0.9.2'
 
     grunt.initConfig
+        pkg: grunt.file.readJSON('package.json')
         watch:
             coffee:
                 files: ['app/scripts/src/**/*.coffee', 'app/scripts/src/**/*.litcoffee'],
@@ -20,7 +21,7 @@ module.exports = (grunt)->
         compress:
             win:
                 options:
-                    archive: "build/releases/win.zip"
+                    archive: "build/releases/scotty-<%= pkg.version %>-win.zip"
                 files: [
                     {
                         cwd: 'build/webkitbuilds/releases/scotty-gui/win/'
@@ -30,7 +31,7 @@ module.exports = (grunt)->
                 ]
             mac:
                 options:
-                    archive: "build/releases/mac.zip"
+                    archive: "build/releases/scotty-<%= pkg.version %>-mac.zip"
                 files: [
                     {
                         cwd: 'build/webkitbuilds/releases/scotty-gui/mac/'
@@ -40,7 +41,7 @@ module.exports = (grunt)->
                 ]
             lin32:
                 options:
-                    archive: "build/releases/linux32.zip"
+                    archive: "build/releases/scotty-<%= pkg.version %>-linux32.zip"
                 files: [
                     {
                         cwd: 'build/webkitbuilds/releases/scotty-gui/linux32/'
@@ -50,7 +51,7 @@ module.exports = (grunt)->
                 ]
             lin64:
                 options:
-                    archive: "build/releases/linux64.zip"
+                    archive: "build/releases/scotty-<%= pkg.version %>-linux64.zip"
                 files: [
                     {
                         cwd: 'build/webkitbuilds/releases/scotty-gui/linux64/'
@@ -102,7 +103,6 @@ module.exports = (grunt)->
                 src: ['**/*.coffee','**/*.litcoffee'],
                 dest: 'app/scripts/build',
                 ext: '.js'
-        pkg: grunt.file.readJSON('package.json'),
         uglify:
             options:
                 compress:
@@ -128,7 +128,6 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-copy'
-    grunt.loadNpmTasks 'grunt-install-dependencies'
     grunt.loadNpmTasks 'grunt-exec'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-compress'
