@@ -15,8 +15,6 @@
 
         <form class="pure-form pure-form-stacked project-add-form" method="POST" action="#/projects/create">
             <fieldset>
-                <legend>Add Project</legend>
-
                 <div class='pure-g'>
                     <div class='pure-u-1-2'>
 

@@ -5,7 +5,7 @@ $ ->
     window.queue = new QueueManager
 
     window.queue.on 'queue:progress', (progress)->
-        progress
+        console.log progress
         if progress.percent
             $(".queue-progress").css width: "#{progress.percent}%"
 
@@ -22,6 +22,9 @@ $ ->
     window.queue.on 'queue:end', (event)->
         $.jGrowl("#{event.getName()} completed")
 
+
+    # Pre-fetch versions when the app runs
+    scotty.versions.fetch()
 
     $("#layout").on 'click', '.open-external', (e)->
         e.preventDefault()

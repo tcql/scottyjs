@@ -4,7 +4,7 @@
     window.dev_tools = new window.scotty.gui.devTools(document, window);
     window.queue = new QueueManager;
     window.queue.on('queue:progress', function(progress) {
-      progress;
+      console.log(progress);
       if (progress.percent) {
         return $(".queue-progress").css({
           width: "" + progress.percent + "%"
@@ -26,6 +26,7 @@
     window.queue.on('queue:end', function(event) {
       return $.jGrowl("" + (event.getName()) + " completed");
     });
+    scotty.versions.fetch();
     $("#layout").on('click', '.open-external', function(e) {
       e.preventDefault();
       return nwgui.Shell.openExternal($(this).attr('href'));
