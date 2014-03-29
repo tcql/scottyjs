@@ -11,3 +11,16 @@
 #main_content h3 {
     margin-top:30px;
 }
+
+
+.screenshot {
+    width:145px;
+    height:109px;
+    border:3px solid #444;
+
+    border-radius:3px;
+}
+
+.screenshot-link {
+    margin:3px;
+}
