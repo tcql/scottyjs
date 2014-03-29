@@ -28,7 +28,7 @@ Grab the latest download for your operating system [here.](http://github.com/tch
 ## Building scotty yourself
 
 scotty requires [nodejs](http://nodejs.org/) and [grunt](http://gruntjs.com).
-coffe
+
 First, clone the repository
 
     git clone https://github.com/tchannel/scottyjs.git
