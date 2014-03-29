@@ -3,3 +3,11 @@
     border: none;
     box-shadow:none;
 }
+
+#main_content {
+    padding-top:0px;
+}
+
+#main_content h3 {
+    margin-top:30px;
+}
