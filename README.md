@@ -10,8 +10,8 @@ It runs as a standalone desktop application, and allows you to
 For more information, see the [scotty page.](http://tchannel.github.io/scottyjs)
 
 
-Note
-====
+## Note
+
 scotty is still in an early/experimental state, so be warned:
 
 - there will probably be bugs
@@ -20,13 +20,13 @@ scotty is still in an early/experimental state, so be warned:
 
 
 
-Downloading
-===========
+## Downloading
+
 Grab the latest download for your operating system [here.](http://github.com/tchannel/scottyjs/releases/latest)
 
 
-Building scotty yourself
-========================
+## Building scotty yourself
+
 scotty requires [nodejs](http://nodejs.org/) and [grunt](http://gruntjs.com).
 coffe
 First, clone the repository
@@ -45,13 +45,13 @@ then, to run scotty
     npm start
 
 
-Bugs
-====
+## Bugs
+
 If you encounter bugs, please file an issue on [scotty github](https://github.com/tchannel/scottyjs/issues/new). If possible include error text and a screenshot.
 
 
-Todo
-====
+## Todo
+
 - Rework scotty-gui to use [AngularJS](http://angularjs.org)
 - Allow creating projects from templates
 - Project deployment tools
