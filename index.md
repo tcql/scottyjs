@@ -1,10 +1,11 @@
 ---
 layout: default
+title: scotty.js
 ---
 
 ### Welcome to scotty.js
 ------------------------
-scotty is a project toolkit for the [Phaser](http://phaser.io) HTML5 game framework.
+scotty is a project toolkit for the [Phaser](http://phaser.io) HTML5 game framework. It runs as a standalone desktop application.
 
 scotty lets you:
 
