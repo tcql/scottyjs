@@ -132,10 +132,8 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-compress'
 
-    grunt.registerTask 'scotty:build', ['coffee']# , 'uglify']
 
-
-    grunt.registerTask 'deploy', 'Builds distributables for scotty', ()->
+    grunt.registerTask 'release', 'Builds distributables for scotty', ()->
         grunt.task.run [
             'clean:build',
             'copy:build',
