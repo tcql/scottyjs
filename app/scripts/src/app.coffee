@@ -5,7 +5,6 @@ $ ->
     window.queue = new QueueManager
 
     window.queue.on 'queue:progress', (progress)->
-        console.log progress
         if progress.percent
             $(".queue-progress").css width: "#{progress.percent}%"
 
