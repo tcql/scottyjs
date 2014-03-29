@@ -8,7 +8,7 @@ module.exports = (grunt)->
         watch:
             coffee:
                 files: ['app/scripts/src/**/*.coffee', 'app/scripts/src/**/*.litcoffee'],
-                tasks: 'scotty:build'
+                tasks: 'coffee'
         clean:
             build:
                 options:
@@ -87,14 +87,14 @@ module.exports = (grunt)->
         nodewebkit:
             options:
                 version: nw_version
-                build_dir: 'build/webkitbuilds', # Where the build version of my node-webkit app is saved
-                mac: true, # We want to build it for mac
-                win: true, # We want to build it for win
-                linux32: true, # We don't need linux32
-                linux64: true # We don't need linux64
+                build_dir: 'build/webkitbuilds',
+                mac: true,
+                win: true,
+                linux32: true,
+                linux64: true
                 zip: true,
                 keep_nw: true,
-            src: ['./build/app/**/*'] # Your node-wekit app
+            src: ['./build/app/**/*']
         coffee:
             scotty:
                 expand: true,
@@ -118,9 +118,6 @@ module.exports = (grunt)->
                     src: '**/*.js',
                     dest: 'app/scripts/build/'
                 }]
-
-
-
 
 
     grunt.loadNpmTasks 'grunt-node-webkit-builder'
