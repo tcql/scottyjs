@@ -8,6 +8,10 @@
     font-size:0.8em;
 }
 
+.feed .feed-table {
+    width:100%;
+}
+
 .feed .feed-table-wrapper-wide {
     overflow-y:auto;
     max-height:200px;

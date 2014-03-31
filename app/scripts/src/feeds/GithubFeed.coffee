@@ -1,25 +1,39 @@
-# Simple reader for github commits. In the future I might expand this to
-# read commits, tags, and issues / PRs and sort them by time so you can
-# get a complete list of what's happening.
+
 class window.GithubFeed
-    constructor: (@options, @user, @repo)->
-        @template = 'templates/home/githubfeed.hb'
+    constructor: (options = {})->
+        @errorMessage = null
+        @latestResults = []
+        @fetching = false
+        @setUp(options)
+
+
+    setUp: (options)->
+        @name = options.name
+        @user = options.user
+        @repo = options.repo
 
 
     fetch: (page = 1, num_per_page = 10, callback = ->) ->
+        @fetching = true
         scotty.api.repos.getCommits
             user: @user
             repo: @repo
             page: page
             per_page: num_per_page,
             (err, results)=>
-                return callback(err, null) if err
+                @fetching = false
+                @errorMessage = null
+                @latestResults.splice(0)
 
-                activity = []
+                if err
+                    @errorMessage = @parseError(err)
+                    return callback(err, null)
+
                 for commit in results
-                    activity.push @makeRecord(commit)
+                    @latestResults.push @makeRecord(commit)
 
-                callback(null, activity)
+                callback(null, @latestResults)
+
 
     parseError: (error)->
         try
@@ -33,7 +47,6 @@ class window.GithubFeed
             icon: result.author.avatar_url
             icon_link: result.author.html_url
             author: result.author.login
-            #todo: format date
             date: moment(result.commit.committer.date).format('YYYY-MM-DD HH:MM')
             message: result.commit.message
             link: result.html_url

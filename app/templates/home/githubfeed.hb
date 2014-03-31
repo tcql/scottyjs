@@ -1,5 +1,4 @@
 <tr class='fade-in'>
-
     <td>
         <a class='open-external' href='{{icon_link}}'>
             <img class='feed-avatar' src={{icon}} />

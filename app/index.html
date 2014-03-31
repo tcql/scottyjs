@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="scottyApp">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +49,9 @@
             </div>
 
             <div id="main">
+                <div ng-view></div>
             </div>
+
         </div>
 
         <div class='instruction-footer'>
@@ -71,16 +73,11 @@
 
         <script type='text/javascript' src="vendor/jquery/jquery.min.js"></script>
         <script type='text/javascript' src="vendor/jgrowl/jquery.jgrowl.min.js"></script>
-        <script type='text/javascript' src="vendor/handlebars/handlebars-v1.3.0.js"></script>
-        <script type='text/javascript' src="vendor/sammy/sammy.min.js"></script>
-        <script type='text/javascript' src="vendor/sammy/sammy.handlebars.js"></script>
-        <script type='text/javascript' src="vendor/sammy/sammy.form.js"></script>
-        <script type='text/javascript' src="vendor/sammy/sammy.nested_params.js"></script>
         <script type='text/javascript' src="vendor/moment/moment.min.js"></script>
 
         <script type='text/javascript' src="vendor/pure/ui.js"></script>
 
-        <script type='text/javascript' src='scripts/build/queue/QueueManager.js'></script>
+        <!--<script type='text/javascript' src='scripts/build/queue/QueueManager.js'></script>
         <script type='text/javascript' src='scripts/build/queue/VersionDownload.js'></script>
         <script type='text/javascript' src='scripts/build/queue/ExamplesDownload.js'></script>
 
@@ -89,10 +86,14 @@
         <script type='text/javascript' src='scripts/build/pages/examples.js'></script>
         <script type='text/javascript' src='scripts/build/pages/home.js'></script>
         <script type='text/javascript' src="scripts/build/devtools.js"></script>
-        <script type='text/javascript' src="scripts/build/menu.js"></script>
+        <script type='text/javascript' src="scripts/build/menu.js"></script>-->
 
+
+        <script type='text/javascript' src="vendor/angularjs/angular.js"></script>
+        <script type='text/javascript' src="vendor/angularjs/angular-route.js"></script>
         <script type='text/javascript' src="scripts/build/feeds/GithubFeed.js"></script>
-
+        <script type='text/javascript' src="scripts/build/feeds/feedProvider.js"></script>
+        <script type='text/javascript' src='scripts/build/controllers/homeControllers.js'></script>
         <script type='text/javascript' src='scripts/build/app.js'></script>
 
         <script type='text/javascript'>

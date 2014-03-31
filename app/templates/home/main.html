@@ -1,0 +1,47 @@
+<div class="header large-header">
+    <img src="images/scotty2.png" />
+</div>
+
+<div class="scroll-container large-header">
+    <div class="content">
+        <div class='feeds pure-g'>
+
+            <div class='feed pure-u-1-1' ng-repeat="feed in feeds">
+                <div class='feed-header'>
+                    <h4>{{ feed.name }}</h4>
+                </div>
+
+                <div ng-if="feed.fetching" class='loading'>
+                    Loading...<br />
+                    <img src="images/ajax-loader.gif" />
+                </div>
+
+                <div ng-if="feed.errorMessage">
+                    There was an error retrieving the feed. {{feed.errorMessage}}
+                </div>
+
+                <div class='feed-table-wrapper-wide' ng-if="feed.latestResults.length > 0">
+                    <table class='pure-table pure-table-horizontal feed-table'>
+                        <tbody>
+                            <tr ng-repeat="commit in feed.latestResults">
+                                <td>
+                                    <a class='open-external' href='{{commit.icon_link}}'>
+                                        <img class='feed-avatar' ng-src="{{commit.icon}}" />
+                                    </a>
+                                </td>
+                                <td class='feed-date'>{{commit.date}}</td>
+
+                                <td>
+                                    <a class='open-external feed-link' href='{{commit.link}}'>
+                                        {{commit.message}}
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
