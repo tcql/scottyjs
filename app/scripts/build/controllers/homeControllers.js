@@ -1,11 +1,10 @@
 (function() {
-  var NewsController, controllers;
+  var controllers;
 
   controllers = angular.module('homeControllers', ['scottyFeeds']);
 
-  NewsController = (function() {
-    function NewsController($scope, feedProvider) {
-      this.scope = $scope;
+  controllers.controller('Home.MainController', [
+    '$scope', 'feedProvider', function($scope, feedProvider) {
       $scope.feeds = [
         feedProvider.make("github", {
           name: "Phaser Github Activity",
@@ -17,28 +16,22 @@
           repo: "scottyjs"
         })
       ];
-      this.refresh();
+      $scope.refresh = function() {
+        var feed, _i, _len, _ref, _results;
+        _ref = $scope.feeds;
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          feed = _ref[_i];
+          _results.push(feed.fetch(1, 10, (function(_this) {
+            return function(err, results) {
+              return $scope.$apply();
+            };
+          })(this)));
+        }
+        return _results;
+      };
+      return $scope.refresh();
     }
-
-    NewsController.prototype.refresh = function() {
-      var feed, _i, _len, _ref, _results;
-      _ref = this.scope.feeds;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        feed = _ref[_i];
-        _results.push(feed.fetch(1, 10, (function(_this) {
-          return function(err, results) {
-            return _this.scope.$apply();
-          };
-        })(this)));
-      }
-      return _results;
-    };
-
-    return NewsController;
-
-  })();
-
-  controllers.controller('Home.NewsController', ['$scope', 'feedProvider', NewsController]);
+  ]);
 
 }).call(this);

@@ -1,0 +1,36 @@
+<div class="header small-header">
+    <img src="images/scotty-small.png" />
+    <h1 class='pull-right'>Examples</h1>
+</div>
+
+<div class="scroll-container small-header">
+
+    <div class="content">
+        <p>scotty lets you download and view the phaser examples.</p>
+
+        <p ng-if="installed">
+            You currently have phaser examples installed. You may update to the most recent version of the
+            phaser examples at any time.
+        </p>
+
+        <p>
+            <a ng-if="queued" class='button-secondary pure-button pure-button-disabled'>
+                <i class='fa fa-refresh fa-spin'> </i> In Progress
+            </a>
+
+            <div ng-if="installed">
+                <a ng-click="download()" class='button-secondary pure-button'>
+                    <i class='fa fa-refresh'> </i> Update Examples
+                </a>
+                <a ng-click="view()" class='button-success pure-button'>
+                    <i class='fa fa-external-link'> </i> View Examples
+                </a>
+            </div>
+
+            <a ng-if="!installed && !queued" ng-click="download()" class='button-secondary pure-button'>
+                <i class='fa fa-download'> </i> Install Examples
+            </a>
+
+        </p>
+    </div>
+</div>

@@ -3,7 +3,7 @@
 
   controllers = angular.module('versionsControllers', []);
 
-  controllers.controller('Versions.ListController', [
+  controllers.controller('Versions.MainController', [
     '$scope', function($scope) {
       $scope.loadVersions = function() {
         $scope.refreshing = false;
@@ -25,7 +25,6 @@
       };
       return $scope.download = function(version) {
         var download;
-        console.log(version);
         version.in_progress = true;
         download = new VersionDownload(version.name);
         window.queue.queueEvent(download);

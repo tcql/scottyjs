@@ -2,7 +2,7 @@
 controllers = angular.module 'versionsControllers', []
 
 
-controllers.controller 'Versions.ListController', ['$scope', ($scope)->
+controllers.controller 'Versions.MainController', ['$scope', ($scope)->
     $scope.loadVersions = ()->
         $scope.refreshing = false
         scotty.versions.versions.getAll (err, versions)=>

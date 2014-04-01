@@ -1,9 +1,13 @@
 (function() {
   var scottyApp;
 
-  scottyApp = angular.module('scottyApp', ['ngRoute', 'homeControllers', 'versionsControllers']);
+  scottyApp = angular.module('scottyApp', ['ngRoute', 'homeControllers', 'versionsControllers', 'examplesControllers']);
 
   scotty.versions.fetch();
+
+  window.nwgui = require('nw.gui');
+
+  window.dev_tools = new window.scotty.gui.devTools(document, window);
 
   window.queue = new QueueManager;
 
@@ -38,10 +42,13 @@
     '$routeProvider', function($routeProvider) {
       return $routeProvider.when('/', {
         templateUrl: 'templates/home/main.html',
-        controller: 'Home.NewsController'
+        controller: 'Home.MainController'
       }).when('/versions', {
         templateUrl: 'templates/versions/main.html',
-        controller: 'Versions.ListController'
+        controller: 'Versions.MainController'
+      }).when('/examples', {
+        templateUrl: 'templates/examples/main.html',
+        controller: 'Examples.MainController'
       });
     }
   ]);
