@@ -6,6 +6,7 @@ class FeedProvider
     constructor: ()->
         @registry =
             "github": GithubFeed
+            # register other feed types!?!?
 
     make: (type, options)->
         return new (@registry[type])(options)

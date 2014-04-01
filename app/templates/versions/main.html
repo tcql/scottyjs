@@ -1,0 +1,46 @@
+<div class="header small-header">
+    <img src="images/scotty-small.png" />
+    <h1 class='pull-right'>
+        Phaser Versions
+    </h1>
+</div>
+
+<div class="scroll-container small-header">
+    <div class="content" ng-if="refreshing">
+        <h2>Refreshing...</h2>
+        This may take a moment
+        <p><img src='images/ajax-loader.gif' /></p>
+    </div>
+
+    <div class="content" ng-if="!refreshing">
+        <p>
+            <a ng-click="refresh()" class='button-secondary pure-button'>
+                <i class='fa fa-refresh'> </i> Refresh List
+            </a>
+        </p>
+
+        <table class='pure-table'>
+            <tbody>
+                <tr ng-repeat="version in available">
+                    <td>{{version.name}}</td>
+                    <td class='pure-g'>
+                        <a ng-if="version.installed" class='pure-u-1 button-success pure-button pure-button-disabled'>
+                            <i class='fa fa-check'> </i> Installed
+                        </a>
+
+                        <a ng-if="version.in_progress" class='pure-u-1 button-secondary pure-button pure-button-disabled'>
+                            <i class='fa fa-refresh fa-spin'> </i> In Progress
+                        </a>
+
+                        <a ng-if="!version.in_progress && !version.installed"
+                            class='pure-u-1 button-success pure-button'
+                            ng-click="download(version)"
+                        >
+                            <i class='fa fa-download'> </i> Download
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
