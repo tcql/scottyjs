@@ -30,8 +30,6 @@ window.queue.on 'queue:end', (event)->
     $.jGrowl("#{event.getName()} completed")
 
 
-
-
 scottyApp.config ['$routeProvider', ($routeProvider)->
     $routeProvider
         .when '/',
