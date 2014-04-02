@@ -28,10 +28,14 @@
           "toolbar": "yes"
         });
       };
-      return $scope["delete"] = function(project) {
+      $scope["delete"] = function(project) {
         return scotty.projects["delete"](project._id, function(err, del) {
           return $scope.refresh();
         });
+      };
+      return $scope.browse = function(project) {
+        console.log(project.path);
+        return nwgui.Shell.openItem(project.path);
       };
     }
   ]);

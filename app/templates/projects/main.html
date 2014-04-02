@@ -18,6 +18,7 @@
                     <th>Phaser Version</th>
                     <th>Play</th>
                     <th>Edit</th>
+                    <th>Browse</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -33,6 +34,11 @@
                     <td>
                         <a href="#/projects/edit/{{project._id}}" class='button-secondary pure-button'>
                             <i class='fa fa-pencil'> </i>
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-click="browse(project)" class="pure-button">
+                            <i class='fa fa-folder-open'> </i>
                         </a>
                     </td>
                     <td>

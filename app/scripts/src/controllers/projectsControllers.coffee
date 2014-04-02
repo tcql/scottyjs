@@ -30,6 +30,10 @@ controllers.controller 'Projects.MainController', ['$scope', ($scope)->
         scotty.projects.delete project._id, (err, del)->
             $scope.refresh()
 
+    $scope.browse = (project)->
+        console.log project.path
+        nwgui.Shell.openItem(project.path)
+
 ]
 
 
