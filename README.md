@@ -52,7 +52,6 @@ If you encounter bugs, please file an issue on [scotty github](https://github.co
 
 ## Todo
 
-- Rework scotty-gui to use [AngularJS](http://angularjs.org)
 - Allow creating projects from templates
 - Project deployment tools
 - Option for downloading only phaser .js and .min.js rather than the entire phaser repo
