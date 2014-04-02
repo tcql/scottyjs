@@ -22,6 +22,7 @@ class window.scotty.gui.devTools
 
 window.scotty.gui.spawn = (url, options, attach_devtools = true)->
     options["new-instance"] = true
+    options["inject-js-start"] = "app/scripts/build/crashscript.js"
     w = nwgui.Window.open(url, options)
 
     if attach_devtools
