@@ -23,15 +23,6 @@
       });
     }
 
-    ProjectsPage.prototype.routeIndex = function(context, route) {
-      return scotty.projects.projects.getAll((function(_this) {
-        return function(err, projects) {
-          route.projects = projects;
-          return route.partial('templates/projects/main.hb');
-        };
-      })(this));
-    };
-
     ProjectsPage.prototype.routeAdd = function(context, route) {
       $("#main").off('click').on('click', '.file-upload-button', function() {
         return $("#file_upload").trigger('click');

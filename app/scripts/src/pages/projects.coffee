@@ -21,12 +21,6 @@ class window.ProjectsPage
             self.routePlay(context, @)
 
 
-    routeIndex: (context, route)->
-        scotty.projects.projects.getAll (err, projects)=>
-            route.projects = projects
-            route.partial('templates/projects/main.hb')
-
-
     routeAdd: (context, route)->
         $("#main").off('click').on 'click', '.file-upload-button', ()->
             $("#file_upload").trigger('click')

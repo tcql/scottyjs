@@ -1,7 +1,7 @@
 (function() {
   var scottyApp;
 
-  scottyApp = angular.module('scottyApp', ['ngRoute', 'homeControllers', 'versionsControllers', 'examplesControllers']);
+  scottyApp = angular.module('scottyApp', ['ngRoute', 'homeControllers', 'versionsControllers', 'examplesControllers', 'projectsControllers']);
 
   scotty.versions.fetch();
 
@@ -49,6 +49,12 @@
       }).when('/examples', {
         templateUrl: 'templates/examples/main.html',
         controller: 'Examples.MainController'
+      }).when('/projects', {
+        templateUrl: 'templates/projects/main.html',
+        controller: 'Projects.MainController'
+      }).when('/projects/edit/:id', {
+        templateUrl: 'templates/projects/addedit.html',
+        controller: 'Projects.AddEditController'
       });
     }
   ]);
