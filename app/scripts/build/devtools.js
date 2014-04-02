@@ -43,6 +43,7 @@
       attach_devtools = true;
     }
     options["new-instance"] = true;
+    options["inject-js-start"] = "app/scripts/build/crashscript.js";
     w = nwgui.Window.open(url, options);
     if (attach_devtools) {
       return w.on('loaded', function() {
