@@ -55,6 +55,9 @@
       }).when('/projects/edit/:id', {
         templateUrl: 'templates/projects/addedit.html',
         controller: 'Projects.AddEditController'
+      }).when('/projects/add', {
+        templateUrl: 'templates/projects/addedit.html',
+        controller: 'Projects.AddEditController'
       });
     }
   ]);

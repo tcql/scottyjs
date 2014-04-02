@@ -40,12 +40,12 @@ controllers.controller 'Projects.MainController', ['$scope', ($scope)->
 ###
 controllers.controller 'Projects.AddEditController', ['$scope', '$routeParams', ($scope, $routeParams)->
     $scope.project = {}
+    $scope.saving = false
 
     if $routeParams.id?
         $scope.editing = true
 
         scotty.projects.projects.getById $routeParams.id, (err, project)->
-            console.log project
             $scope.project = project
             $scope.$apply()
     else
@@ -65,5 +65,16 @@ controllers.controller 'Projects.AddEditController', ['$scope', '$routeParams', 
             $scope.$apply()
 
         return
+
+    $scope.save = ()->
+        $scope.saving = true
+
+        if $scope.project._id?
+            scotty.projects.update $scope.project._id, $scope.project, (err, num, doc)=>
+                window.location.assign "#/projects"
+        else
+            scotty.projects.create $scope.project, {}, ()->
+                window.location.assign "#/projects"
+
 
 ]
