@@ -25,6 +25,9 @@
       }).when('/projects/add', {
         templateUrl: 'templates/projects/addedit.html',
         controller: 'Projects.AddEditController'
+      }).when('/projects/delete/:id', {
+        templateUrl: 'templates/projects/delete.html',
+        controller: 'Projects.DeleteController'
       });
     }
   ]);

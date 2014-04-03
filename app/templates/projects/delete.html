@@ -1,0 +1,25 @@
+<div class="header small-header">
+    <img src="images/scotty-small.png" />
+
+    <h1 class='pull-right'>Delete Project</h1>
+</div>
+
+<div class="scroll-container small-header">
+    <div class="content">
+        <p>
+            Are you sure you want to delete <strong>{{project.name}}</strong>? <br />
+            <em>This will permanently delete the project folder and all contents</em>
+
+            <div class='pure-g' ng-if="!deleting">
+                <div class='pure-u-1-1'>
+                <a ng-click="delete()" class='pure-button button-success'>
+                    <i class='fa fa-check'> </i> Yes
+                </a>
+                <a href="#/projects" class='pure-button button-error'>
+                    <i class='fa fa-times'> </i> No
+                </a>
+                </div>
+            </div>
+        </p>
+    </div>
+</div>

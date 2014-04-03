@@ -26,10 +26,6 @@ controllers.controller 'Projects.MainController', ['$scope', ($scope)->
             }
         )
 
-    $scope.delete = (project)->
-        scotty.projects.delete project._id, (err, del)->
-            $scope.refresh()
-
     $scope.browse = (project)->
         console.log project.path
         nwgui.Shell.openItem(project.path)
@@ -79,6 +75,20 @@ controllers.controller 'Projects.AddEditController', ['$scope', '$routeParams', 
         else
             scotty.projects.create $scope.project, {}, ()->
                 window.location.assign "#/projects"
+]
 
 
+
+controllers.controller 'Projects.DeleteController', ['$scope', '$routeParams', ($scope, $routeParams)->
+    $scope.project = {}
+    $scope.deleting = false
+
+    scotty.projects.projects.getById $routeParams.id, (err, project)->
+        $scope.project = project
+        $scope.$apply()
+
+    $scope.delete = ()->
+        $scope.deleting = true
+        scotty.projects.delete $routeParams.id, (err, del)->
+            window.location.assign "#/projects"
 ]

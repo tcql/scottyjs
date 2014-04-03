@@ -28,11 +28,6 @@
           "toolbar": "yes"
         });
       };
-      $scope["delete"] = function(project) {
-        return scotty.projects["delete"](project._id, function(err, del) {
-          return $scope.refresh();
-        });
-      };
       return $scope.browse = function(project) {
         console.log(project.path);
         return nwgui.Shell.openItem(project.path);
@@ -86,6 +81,23 @@
             return window.location.assign("#/projects");
           });
         }
+      };
+    }
+  ]);
+
+  controllers.controller('Projects.DeleteController', [
+    '$scope', '$routeParams', function($scope, $routeParams) {
+      $scope.project = {};
+      $scope.deleting = false;
+      scotty.projects.projects.getById($routeParams.id, function(err, project) {
+        $scope.project = project;
+        return $scope.$apply();
+      });
+      return $scope["delete"] = function() {
+        $scope.deleting = true;
+        return scotty.projects["delete"]($routeParams.id, function(err, del) {
+          return window.location.assign("#/projects");
+        });
       };
     }
   ]);
