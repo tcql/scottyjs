@@ -4,6 +4,7 @@ scottyApp = angular.module 'scottyApp', [
     'versionsControllers',
     'examplesControllers',
     'projectsControllers',
+    'scottyFilters'
 ]
 
 scotty.versions.fetch()

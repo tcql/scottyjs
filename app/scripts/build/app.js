@@ -1,7 +1,7 @@
 (function() {
   var scottyApp;
 
-  scottyApp = angular.module('scottyApp', ['ngRoute', 'homeControllers', 'versionsControllers', 'examplesControllers', 'projectsControllers']);
+  scottyApp = angular.module('scottyApp', ['ngRoute', 'homeControllers', 'versionsControllers', 'examplesControllers', 'projectsControllers', 'scottyFilters']);
 
   scotty.versions.fetch();
 

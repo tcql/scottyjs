@@ -32,8 +32,8 @@
                                 <td class='feed-date'>{{commit.date}}</td>
 
                                 <td>
-                                    <a class='open-external feed-link' href='{{commit.link}}'>
-                                        {{commit.message}}
+                                    <a class='open-external feed-link' href='{{commit.link}}' title="{{commit.message}}">
+                                        {{ commit.message | truncate:130 }}
                                     </a>
                                 </td>
                             </tr>
