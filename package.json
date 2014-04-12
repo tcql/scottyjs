@@ -1,6 +1,6 @@
 {
   "name": "scotty-gui",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "bin": {
     "scotty": "./node_modules/.bin/nodewebkit"
   },
@@ -9,7 +9,7 @@
   },
   "main": "app/index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "height": 600,
     "width": 800
   },
